@@ -54,4 +54,4 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/tristanlimyr)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: Testing
