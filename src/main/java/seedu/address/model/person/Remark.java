@@ -7,11 +7,21 @@ import static java.util.Objects.requireNonNull;
  * Guarantees: immutable; is always valid
  */
 public class Remark {
+
+    public static final String MESSAGE_CONSTRAINTS = "Remark can take any values";
+
     public final String value;
 
     public Remark(String remark) {
         requireNonNull(remark);
         value = remark;
+    }
+
+    /**
+     * Returns true if a given string is a valid remark.
+     */
+    public static boolean isValidRemark(String test) {
+        return true; // any string is a valid remark
     }
 
     @Override
