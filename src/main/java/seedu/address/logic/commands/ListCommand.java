@@ -1,8 +1,8 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CLIENTS;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_VENDORS;
 
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -23,7 +23,10 @@ public class ListCommand extends Command {
     public static final String MESSAGE_SUCCESS_CLIENTS = "Listed all clients";
     public static final String MESSAGE_SUCCESS_VENDORS = "Listed all vendors";
 
-    public enum Flag {CONTACT, ITINERARY, CLIENT, VENDOR}
+    /**
+     * Represents the possible flags that can be used to list entries.
+     */
+    public enum Flag { CONTACT, ITINERARY, CLIENT, VENDOR }
 
     private final Flag flag;
 
