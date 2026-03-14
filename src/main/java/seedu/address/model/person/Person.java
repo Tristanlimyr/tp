@@ -82,13 +82,11 @@ public class Person {
     }
 
     /**
-     * Returns true if the person has the specified tag (case-insensitive)
+     * Returns true if the person has the specified role.
      */
-    public boolean hasSpecifiedTag(Tag specifiedTag) {
-        for (Tag tag : tags) {
-            if (tag.equals(specifiedTag)) {
-                return true;
-            }
+    public boolean hasSpecifiedRole(Role specifiedRole) {
+        if (this.role.equals(specifiedRole)) {
+            return true;
         }
         return false;
     }

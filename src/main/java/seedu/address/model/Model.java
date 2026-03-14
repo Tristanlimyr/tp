@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.Person;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.person.Role;
 
 /**
  * The API of the Model component.
@@ -16,10 +16,10 @@ public interface Model {
     Predicate<Person> PREDICATE_SHOW_ALL_CONTACTS = person -> true;
 
     /** {@code Predicate} that evaluates to true if the Person contains the 'Client' tag, and false otherwise */
-    Predicate<Person> PREDICATE_SHOW_ALL_CLIENTS = person -> (person.hasSpecifiedTag(new Tag("Client")));
+    Predicate<Person> PREDICATE_SHOW_ALL_CLIENTS = person -> (person.hasSpecifiedRole(new Role("client")));
 
     /** {@code Predicate} that always evaluate to true if the Person contains the 'Vendor' tag, and false otherwise */
-    Predicate<Person> PREDICATE_SHOW_ALL_VENDORS = person -> (person.hasSpecifiedTag(new Tag("Vendor")));
+    Predicate<Person> PREDICATE_SHOW_ALL_VENDORS = person -> (person.hasSpecifiedRole(new Role("vendor")));
 
     /* Temporary, to review again after adding Itinerary class
         /** {@code Predicate} that always evaluate to true
