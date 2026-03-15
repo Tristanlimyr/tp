@@ -82,6 +82,16 @@ public class Person {
     }
 
     /**
+     * Returns true if the person has the specified role.
+     */
+    public boolean hasSpecifiedRole(Role specifiedRole) {
+        if (this.role.equals(specifiedRole)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Returns true if both persons have the same name.
      * This defines a weaker notion of equality between two persons.
      */
