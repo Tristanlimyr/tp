@@ -70,7 +70,9 @@ public class AddiCommand extends Command {
         }
 
         AddiCommand otherAddiCommand = (AddiCommand) other;
-        return toAdd.equals(otherAddiCommand.toAdd);
+        return toAdd.getName().equals(otherAddiCommand.toAdd.getName())
+                && toAdd.getDestination().equals(otherAddiCommand.toAdd.getDestination())
+                && toAdd.getDateRange().equals(otherAddiCommand.toAdd.getDateRange());
     }
 
     @Override
