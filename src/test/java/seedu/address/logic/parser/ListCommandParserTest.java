@@ -47,4 +47,16 @@ public class ListCommandParserTest {
         assertParseSuccess(parser, "/vendor",
                 new ListCommand(ListCommand.Flag.VENDOR));
     }
+
+    @Test
+    public void parse_upperCaseFlag_returnsListCommand() {
+        assertParseSuccess(parser, "/CONTACT",
+                new ListCommand(ListCommand.Flag.CONTACT));
+    }
+
+    @Test
+    public void parse_mixedCaseFlag_returnsListCommand() {
+        assertParseSuccess(parser, "/Contact",
+                new ListCommand(ListCommand.Flag.CONTACT));
+    }
 }

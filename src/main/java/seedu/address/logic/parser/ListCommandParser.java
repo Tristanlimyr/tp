@@ -9,7 +9,10 @@ import seedu.address.logic.parser.exceptions.ParseException;
  * Parses input arguments and creates a new ListCommand object
  */
 public class ListCommandParser implements Parser<ListCommand> {
-
+    public static final String CONTACT_FLAG = "/contact";
+    public static final String CLIENT_FLAG = "/client";
+    public static final String VENDOR_FLAG = "/vendor";
+    public static final String ITINERARY_FLAG = "/itinerary";
 
     /**
      * Parses the given {@code String} of arguments in the context of the ListCommand
@@ -25,15 +28,15 @@ public class ListCommandParser implements Parser<ListCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));
         }
 
-        switch (trimmedFlag.toLowerCase()) { // Case-sensitive
-        case "/contact":
+        switch (trimmedFlag.toLowerCase()) { // Case-insensitive
+        case CONTACT_FLAG:
             return new ListCommand(ListCommand.Flag.CONTACT);
-        case "/itinerary":
-            return new ListCommand(ListCommand.Flag.ITINERARY);
-        case "/client":
+        case CLIENT_FLAG:
             return new ListCommand(ListCommand.Flag.CLIENT);
-        case "/vendor":
+        case VENDOR_FLAG:
             return new ListCommand(ListCommand.Flag.VENDOR);
+        case ITINERARY_FLAG:
+            return new ListCommand(ListCommand.Flag.ITINERARY);
         default:
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));
