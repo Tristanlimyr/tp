@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.id.Id;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -79,12 +79,12 @@ class JsonAdaptedPerson {
         for (JsonAdaptedTag tag : tags) {
             personTags.add(tag.toModelType());
         }
-        final UUID modelId;
+        final Id modelId;
         if (id == null) {
-            modelId = UUID.randomUUID();
+            modelId = new Id();
         } else {
             try {
-                modelId = UUID.fromString(id);
+                modelId = new Id(id);
             } catch (IllegalArgumentException e) {
                 throw new IllegalValueException(INVALID_ID_MESSAGE_FORMAT);
             }

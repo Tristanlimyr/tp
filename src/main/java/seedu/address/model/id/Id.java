@@ -28,6 +28,13 @@ public class Id {
     }
 
     /**
+     * Constructs a {@code Id}.
+     */
+    public Id() {
+        value = UUID.randomUUID();
+    }
+
+    /**
      * Returns true if a given string is a valid id.
      */
     public static boolean isValidId(String test) {
