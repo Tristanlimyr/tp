@@ -54,9 +54,9 @@ public class AddiCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-          if (model.hasItinerary(toAdd)) {
-              throw new CommandException(MESSAGE_DUPLICATE_ITINERARY);
-          }
+        if (model.hasItinerary(toAdd)) {
+            throw new CommandException(MESSAGE_DUPLICATE_ITINERARY);
+        }
 
         model.addItinerary(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
