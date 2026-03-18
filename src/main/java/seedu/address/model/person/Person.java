@@ -161,6 +161,7 @@ public class Person {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
+                .add("id", id)
                 .add("role", role)
                 .add("name", name)
                 .add("phone", phone)

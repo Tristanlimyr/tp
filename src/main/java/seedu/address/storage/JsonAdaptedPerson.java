@@ -79,16 +79,14 @@ class JsonAdaptedPerson {
         for (JsonAdaptedTag tag : tags) {
             personTags.add(tag.toModelType());
         }
-        final Id modelId;
+
         if (id == null) {
-            modelId = new Id();
-        } else {
-            try {
-                modelId = new Id(id);
-            } catch (IllegalArgumentException e) {
-                throw new IllegalValueException(INVALID_ID_MESSAGE_FORMAT);
-            }
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Id.class.getSimpleName()));
         }
+        if (!Id.isValidId(id)) {
+            throw new IllegalValueException(Id.MESSAGE_CONSTRAINTS);
+        }
+        final Id modelId = new Id(id);
 
         final String roleToLoad = role == null ? Role.DEFAULT_ROLE : role;
         if (!Role.isValidRole(roleToLoad)) {
