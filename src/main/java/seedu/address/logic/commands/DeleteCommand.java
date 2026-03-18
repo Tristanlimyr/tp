@@ -45,24 +45,24 @@ public class DeleteCommand extends Command {
         requireNonNull(model);
 
         if (flag.equals(DeleteType.CONTACT)) {
-            List<Person> lastShownList = model.getFilteredPersonList();
+            List<Person> lastShownContactList = model.getFilteredPersonList();
 
-            if (targetIndex.getZeroBased() >= lastShownList.size()) {
+            if (targetIndex.getZeroBased() >= lastShownContactList.size()) {
                 throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
             }
 
-            Person personToDelete = lastShownList.get(targetIndex.getZeroBased());
+            Person personToDelete = lastShownContactList.get(targetIndex.getZeroBased());
             model.deletePerson(personToDelete);
             return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, Messages.format(personToDelete)));
 
         } else if (flag.equals(DeleteType.ITINERARY)) {
-            List<Itinerary> lastShownList = model.getFilteredItineraryList();
+            List<Itinerary> lastShownItineraryList = model.getFilteredItineraryList();
 
-            if (targetIndex.getZeroBased() >= lastShownList.size()) {
+            if (targetIndex.getZeroBased() >= lastShownItineraryList.size()) {
                 throw new CommandException(Messages.MESSAGE_INVALID_ITINERARY_DISPLAYED_INDEX);
             }
 
-            Itinerary itineraryToDelete = lastShownList.get(targetIndex.getZeroBased());
+            Itinerary itineraryToDelete = lastShownItineraryList.get(targetIndex.getZeroBased());
             model.deleteItinerary(itineraryToDelete);
             return new CommandResult(String.format(MESSAGE_DELETE_ITINERARY_SUCCESS,
                                                    Messages.format(itineraryToDelete)));
