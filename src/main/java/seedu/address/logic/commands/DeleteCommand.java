@@ -22,7 +22,8 @@ public class DeleteCommand extends Command {
     public static final String ITINERARY_FLAG = "/itinerary";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the contact or itinerary identified by the index number used in the displayed contact list.\n"
+            + ": Deletes the contact or itinerary identified by the index number used in the displayed contact or "
+            + "itinerary list.\n"
             + "Parameters: FLAG (" + CONTACT_FLAG + " OR " + ITINERARY_FLAG + ") INDEX (must be a positive integer)\n"
             + "Contact Example: " + COMMAND_WORD + " " + CONTACT_FLAG + " 1  |  "
             + "Itinerary Example: " + COMMAND_WORD + " " + ITINERARY_FLAG + " 2";
