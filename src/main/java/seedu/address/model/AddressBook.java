@@ -2,8 +2,10 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 
 import javafx.collections.ObservableList;
@@ -11,7 +13,9 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.itinerary.Itinerary;
 import seedu.address.model.itinerary.UniqueItineraryList;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Role;
 import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
  * Wraps all data at the address-book level
@@ -21,6 +25,9 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
     private final UniqueItineraryList itineraries;
+
+    private final Set<UUID> clientIds = new HashSet<>();
+    private final Set<UUID> vendorIds = new HashSet<>();
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -52,6 +59,11 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void setPersons(List<Person> persons) {
         this.persons.setPersons(persons);
+        clientIds.clear();
+        vendorIds.clear();
+        for (Person person : persons) {
+            addPersonId(person);
+        }
     }
 
     /**
@@ -59,6 +71,11 @@ public class AddressBook implements ReadOnlyAddressBook {
      * {@code itineraries} must not contain duplicate itineraries.
      */
     public void setItineraries(List<Itinerary> itineraries) {
+        for (Itinerary itinerary : itineraries) {
+            if (!hasPersonsWithIds(itinerary)) {
+                throw new PersonNotFoundException();
+            }
+        }
         this.itineraries.setItineraries(itineraries);
     }
 
@@ -88,6 +105,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void addPerson(Person p) {
         persons.add(p);
+        addPersonId(p);
     }
 
     /**
@@ -99,6 +117,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(editedPerson);
 
         persons.setPerson(target, editedPerson);
+        removePersonId(target);
+        addPersonId(editedPerson);
     }
 
     /**
@@ -109,6 +129,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         UUID id = key.getId();
         persons.remove(key);
         itineraries.removePerson(id);
+        removePersonId(key);
     }
 
     /// itinerary-level operations
@@ -124,8 +145,12 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Adds an itinerary to the address book.
      * The itinerary must not already exist in the address book.
+     * Client and vendor ids of itinerary must already exist in the address book.
      */
     public void addItinerary(Itinerary i) {
+        if (!hasPersonsWithIds(i)) {
+            throw new PersonNotFoundException();
+        }
         itineraries.add(i);
     }
 
@@ -137,7 +162,9 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void setItinerary(Itinerary target, Itinerary editedItinerary) {
         requireNonNull(editedItinerary);
-
+        if (!hasPersonsWithIds(editedItinerary)) {
+            throw new PersonNotFoundException();
+        }
         itineraries.setItinerary(target, editedItinerary);
     }
 
@@ -150,6 +177,37 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     //// util methods
+    private void addPersonId(Person person) {
+        switch (person.getRole().value) {
+        case CLIENT -> clientIds.add(person.getId());
+        case VENDOR -> vendorIds.add(person.getId());
+        default -> throw new IllegalArgumentException(Role.MESSAGE_CONSTRAINTS);
+        }
+    }
+
+    private void removePersonId(Person person) {
+        switch (person.getRole().value) {
+        case CLIENT -> clientIds.remove(person.getId());
+        case VENDOR -> vendorIds.remove(person.getId());
+        default -> throw new IllegalArgumentException(Role.MESSAGE_CONSTRAINTS);
+        }
+    }
+
+    private boolean hasPersonsWithIds(Itinerary itinerary) {
+        for (UUID clientId : itinerary.getClientIds()) {
+            if (!clientIds.contains(clientId)) {
+                return false;
+            }
+        }
+
+        for (UUID vendorId : itinerary.getVendorIds()) {
+            if (!vendorIds.contains(vendorId)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 
     @Override
     public String toString() {
