@@ -23,15 +23,6 @@ public class DeleteCommandParserTest {
     private DeleteCommandParser parser = new DeleteCommandParser();
 
     @Test
-    public void parse_validArgs_returnsDeleteCommand() {
-        assertParseSuccess(parser, "/contact 1", new DeleteCommand(DeleteCommand.DeleteType.CONTACT,
-                                                                   INDEX_FIRST_PERSON));
-        assertParseSuccess(parser, "/itinerary 2", new DeleteCommand(DeleteCommand.DeleteType.CONTACT,
-                                                                     INDEX_SECOND_ITINERARY));
-
-    }
-
-    @Test
     public void parse_invalidArgs_throwsParseException() {
 
         // non-index
@@ -82,6 +73,9 @@ public class DeleteCommandParserTest {
     @Test
     public void parse_contactFlag_returnsDeleteCommandWithContactFlag() {
 
+        assertParseSuccess(parser, "/contact 1", new DeleteCommand(DeleteCommand.DeleteType.CONTACT,
+                INDEX_FIRST_PERSON));
+
         assertParseSuccess(parser, "/contact 2", new DeleteCommand(DeleteCommand.DeleteType.CONTACT,
                 INDEX_SECOND_ITINERARY));
 
@@ -92,6 +86,9 @@ public class DeleteCommandParserTest {
 
         assertParseSuccess(parser, "/itinerary 1", new DeleteCommand(DeleteCommand.DeleteType.ITINERARY,
                 INDEX_FIRST_ITINERARY));
+
+        assertParseSuccess(parser, "/itinerary 2", new DeleteCommand(DeleteCommand.DeleteType.CONTACT,
+                INDEX_SECOND_ITINERARY));
 
     }
 

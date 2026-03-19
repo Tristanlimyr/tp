@@ -84,7 +84,7 @@ public class DeleteCommandTest {
         assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
-    // ########### Itineraries
+    // Itinerary
 
     @Test
     public void execute_validIndexUnfilteredItineraryList_success() {
