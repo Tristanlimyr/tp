@@ -33,7 +33,7 @@ TripScribe allows you to manage contacts and itineraries on your desktop using k
 
    * `list /contact` : Lists all contacts.
 
-   * `addc n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to TripScribe.
+   * `addc r/client n/John Doe p/(+65) 98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to TripScribe.
    
    * `addi n/Bali Getaway dest/Bali from/2026-07-01 to/2026-07-05`: Adds an itinerary named `Bali Getaway` to TripScribe.
 
@@ -54,7 +54,7 @@ You can refer to the [Features](#features) below for details of each command.
 **Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` is information you supply to TripScribe.<br>
-  e.g. in `add n/NAME`, `NAME` is used as `add n/John Doe`.
+  e.g. in `addc r/ROLE`, `ROLE` is used as `addc r/client`.
 
 * Items in square brackets are optional.<br>
   e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/Bus` or `n/John Doe`.
@@ -80,20 +80,28 @@ Opens a help window showing a summary of all available commands and a link to th
 Format: `help`
 
 
-### Adding a person: `add`
+### Adding a contact: `addc`
 
-Adds a person to the address book.
+Adds a contact to TripScribe.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+Format: `addc r/ROLE n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
 
-</box type="tip" seamless>
+<box type="tip" seamless>
 
-**Tip:** A person can have any number of tags (including 0)
+**Tip:**
+- `ROLE` must be either `client` or `vendor`
+- A contact can have any number of tags (including 0)
+- Phone numbers should follow the format `(+<Country Code>) <Phone Number>`, for example `(+65) 987654332`.
+- Contacts with the same name and phone number are considered duplicates. Duplicate contacts cannot be added.
 </box>
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `addc r/client n/John Doe p/(+65) 98765432 e/johnd@example.com a/John street, block 123, #01-01`
+* `addc r/vendor n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/(+44) 1234567 t/criminal`
+
+A successful `addc` command will add the contact to the contact list.
+
+![Result of adding a contact](images/AddcSuccess.png)
 
 ### Adding an itinerary: `addi`
 
@@ -249,7 +257,7 @@ Furthermore, certain edits can cause the TripScribe to behave in unexpected ways
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Addc**   | `addc n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `addc n/James Ho p/(+65) 22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
 **Addi**   | `addi n/ITINERARY_NAME dest/DESTINATION from/START_DATE to/END_DATE [c/CLIENT_ID]…​ [v/VENDOR_ID]…​` <br> e.g., `addi n/5D4N France Getaway dest/France from/2026-10-12 to/2026-10-17 c/236075fd-4619-4b41-8d9f-9d98eadedd89 v/5b8511e5-12d0-49fa-b1da-d84fa7df756a`
 **Clear**  | `clear`
 **Delete** | `delete /FLAG INDEX`<br> e.g., `delete /contact 3`
