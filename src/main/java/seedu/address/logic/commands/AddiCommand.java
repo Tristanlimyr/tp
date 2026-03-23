@@ -127,6 +127,8 @@ public class AddiCommand extends Command {
     public String toString() {
         return new ToStringBuilder(this)
                 .add("toAdd", toAdd)
+                .add("clientIndices", clientIndices)
+                .add("vendorIndices", vendorIndices)
                 .toString();
     }
 }
