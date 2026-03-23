@@ -8,12 +8,18 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ITINERARY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ITINERARY_START;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ITINERARY_VENDOR;
 
+import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.itinerary.Itinerary;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.person.Person;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
 /**
  * Adds an itinerary to TripScribe.
@@ -40,16 +46,23 @@ public class AddiCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New itinerary added: %1$s";
     public static final String MESSAGE_DUPLICATE_ITINERARY = "This itinerary already exists in TripScribe";
-    public static final String MESSAGE_PERSON_ID_MISSING = "Id does not exist in TripScribe";
+    public static final String MESSAGE_PERSON_INDEX_MISSING = "Index not found in current TripScribe window!";
+    public static final String MESSAGE_NOT_CLIENT = "%1s is not a client";
+    public static final String MESSAGE_NOT_VENDOR = "%1s is not a vendor";
+
 
     private final Itinerary toAdd;
+    private final Set<Index> clientIndices;
+    private final Set<Index> vendorIndices;
 
     /**
      * Creates an AddiCommand to add the specified {@code Itinerary}
      */
-    public AddiCommand(Itinerary itinerary) {
+    public AddiCommand(Itinerary itinerary, Set<Index> clientIndices, Set<Index> vendorIndices) {
         requireNonNull(itinerary);
         toAdd = itinerary;
+        this.clientIndices = clientIndices;
+        this.vendorIndices = vendorIndices;
     }
 
     @Override
@@ -60,11 +73,36 @@ public class AddiCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_ITINERARY);
         }
 
-        try {
-            model.addItinerary(toAdd);
-        } catch (PersonNotFoundException e) {
-            throw new CommandException(MESSAGE_PERSON_ID_MISSING);
+        List<Person> lastShownContactList = model.getFilteredPersonList();
+        Set<UUID> clientUUIDs = new HashSet<>();
+        Set<UUID> vendorUUIDs = new HashSet<>();
+
+        for (Index index : clientIndices) {
+            if (index.getZeroBased() >= lastShownContactList.size()) {
+                throw new CommandException(MESSAGE_PERSON_INDEX_MISSING);
+            }
+            Person person = lastShownContactList.get(index.getZeroBased());
+            if (!person.isClient()) {
+                throw new CommandException(String.format(MESSAGE_NOT_CLIENT, person.getName()));
+            }
+            clientUUIDs.add(person.getId());
         }
+
+        for (Index index : vendorIndices) {
+            if (index.getZeroBased() >= lastShownContactList.size()) {
+                throw new CommandException(MESSAGE_PERSON_INDEX_MISSING);
+            }
+            Person person = lastShownContactList.get(index.getZeroBased());
+            if (!person.isVendor()) {
+                throw new CommandException(String.format(MESSAGE_NOT_VENDOR, person.getName()));
+            }
+            vendorUUIDs.add(person.getId());
+        }
+
+        toAdd.setClients(clientUUIDs);
+        toAdd.setVendors(vendorUUIDs);
+
+        model.addItinerary(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
     }
 

@@ -209,15 +209,15 @@ public class ParserUtil {
     }
 
     /**
-     * Parses {@code Collection<String> uuids} into a {@code Set<UUID>}.
+     * Parses {@code Collection<String> indices} into a {@code Set<Indexes>}.
      */
-    public static Set<UUID> parseUuids(Collection<String> uuids) throws ParseException {
-        requireNonNull(uuids);
-        final Set<UUID> uuidSet = new HashSet<>();
-        for (String uuid : uuids) {
-            uuidSet.add(parseUuid(uuid));
+    public static Set<Index> parseIndices(Collection<String> uuidIndices) throws ParseException {
+        requireNonNull(uuidIndices);
+        final Set<Index> indices = new HashSet<>();
+        for (String idx : uuidIndices) {
+            indices.add(parseIndex(idx));
         }
-        return uuidSet;
+        return indices;
     }
 
 

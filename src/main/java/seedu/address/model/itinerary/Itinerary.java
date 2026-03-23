@@ -29,13 +29,33 @@ public class Itinerary {
      * Every field must be present and not null.
      */
     public Itinerary(ItineraryName itineraryName, Destination destination,
-                     DateRange dateRange, Set<UUID> clientIds, Set<UUID> vendorIds) {
-        requireAllNonNull(itineraryName, destination, dateRange, clientIds, vendorIds);
+                     DateRange dateRange) {
+        requireAllNonNull(itineraryName, destination, dateRange);
+        this.itineraryName = itineraryName;
+        this.destination = destination;
+        this.dateRange = dateRange;
+        this.clientIds = new HashSet<>();
+        this.vendorIds = new HashSet<>();
+    }
+
+    public Itinerary(ItineraryName itineraryName, Destination destination,
+                     DateRange dateRange,  Set<UUID> clientIds, Set<UUID> vendorIds) {
+        requireAllNonNull(itineraryName, destination, dateRange);
         this.itineraryName = itineraryName;
         this.destination = destination;
         this.dateRange = dateRange;
         this.clientIds = new HashSet<>(clientIds);
         this.vendorIds = new HashSet<>(vendorIds);
+    }
+
+    public void setClients(Set<UUID> clientIds) {
+        requireAllNonNull(clientIds);
+        this.clientIds.addAll(clientIds);
+    }
+
+    public void setVendors(Set<UUID> vendorIds) {
+        requireAllNonNull(vendorIds);
+        this.vendorIds.addAll(vendorIds);
     }
 
     public ItineraryName getName() {
