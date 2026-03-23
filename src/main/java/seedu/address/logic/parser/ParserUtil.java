@@ -191,24 +191,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String uuid} into a {@code UUID}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code uuid} is invalid.
-     */
-    public static UUID parseUuid(String uuid) throws ParseException {
-        requireNonNull(uuid);
-        String trimmedUuid = uuid.trim();
-        UUID result;
-        try {
-            result = UUID.fromString(trimmedUuid);
-        } catch (IllegalArgumentException e) {
-            throw new ParseException("Invalid UUID in input: " + trimmedUuid);
-        }
-        return result;
-    }
-
-    /**
      * Parses {@code Collection<String> indices} into a {@code Set<Indexes>}.
      */
     public static Set<Index> parseIndices(Collection<String> uuidIndices) throws ParseException {

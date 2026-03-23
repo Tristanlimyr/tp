@@ -46,7 +46,6 @@ public class ParserUtilTest {
     private static final String VALID_ITINERARY_DESTNATION = "France";
     private static final String VALID_START_DATE_STRING = "2020-02-02";
     private static final String VALID_END_DATE_STRING = "2020-02-04";
-    private static final String VALID_UUID_STRING = "11111111-1111-1111-1111-111111111111";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -248,21 +247,5 @@ public class ParserUtilTest {
 
     }
 
-    @Test
-    public void parseUuid_validValueWithoutWhitespace_returnsUuid() throws Exception {
-        UUID expectedUuid = UUID.fromString(VALID_UUID_STRING);
-        assertEquals(expectedUuid, ParserUtil.parseUuid(VALID_UUID_STRING));
-    }
-
-    @Test
-    public void parseUuid_validValueWithWhitespace_returnsUuid() throws Exception {
-        UUID expectedUuid = UUID.fromString(VALID_UUID_STRING);
-        assertEquals(expectedUuid, ParserUtil.parseUuid(WHITESPACE + VALID_UUID_STRING));
-    }
-
-    @Test
-    public void parseUuid_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseUuid(INVALID_UUID_STR));
-    }
 
 }
