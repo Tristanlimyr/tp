@@ -38,8 +38,11 @@ public class Itinerary {
         this.vendorIds = new HashSet<>();
     }
 
+    /**
+     * Alternative constructor for reading from storage file
+     */
     public Itinerary(ItineraryName itineraryName, Destination destination,
-                     DateRange dateRange,  Set<UUID> clientIds, Set<UUID> vendorIds) {
+                     DateRange dateRange, Set<UUID> clientIds, Set<UUID> vendorIds) {
         requireAllNonNull(itineraryName, destination, dateRange, clientIds, vendorIds);
         this.itineraryName = itineraryName;
         this.destination = destination;
@@ -92,6 +95,7 @@ public class Itinerary {
 
     /**
      * Removes a person from the itinerary.
+     *
      * @param id UUID of the removed person.
      */
     public void removePersonId(UUID id) {
@@ -101,6 +105,7 @@ public class Itinerary {
 
     /**
      * Checks whether the Itinerary contain specific person.
+     *
      * @param id The UUID of specific person.
      */
     public boolean containsPerson(UUID id) {
