@@ -40,7 +40,7 @@ public class Itinerary {
 
     public Itinerary(ItineraryName itineraryName, Destination destination,
                      DateRange dateRange,  Set<UUID> clientIds, Set<UUID> vendorIds) {
-        requireAllNonNull(itineraryName, destination, dateRange);
+        requireAllNonNull(itineraryName, destination, dateRange, clientIds, vendorIds);
         this.itineraryName = itineraryName;
         this.destination = destination;
         this.dateRange = dateRange;
