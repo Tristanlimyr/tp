@@ -21,15 +21,15 @@ TripScribe lets you manage contacts and itineraries on your desktop using keyboa
 1. [Quick Start](#quick-start)
 2. [Features](#features)
     - [Reading Command Format](#reading-command-formats)
-    - [Viewing Help : `help`](#viewing-help--help)
+    - [Viewing Help : `help`](#viewing-help-help)
     - [Adding a Contact : `addc`](#adding-a-contact-addc)
     - [Adding an Itinerary : `addi`](#adding-an-itinerary-addi)
-    - [Listing Contacts and Itineraries : `list`](#listing-contacts-and-itineraries--list)
-    - [Editing a Contact : `edit`](#editing-a-contact--edit)
+    - [Listing Contacts and Itineraries : `list`](#listing-contacts-and-itineraries-list)
+    - [Editing a Contact : `edit`](#editing-a-contact-edit)
     - [Finding Contacts by Name : `find`](#finding-contacts-by-name-find)
-    - [Deleting a Contact or Itinerary : `delete`](#deleting-a-contact-or-itinerary--delete)
-    - [Clearing All Entries : `clear`](#clearing-all-entries--clear)
-    - [Exiting TripScribe : `exit`](#exiting-tripscribe--exit)
+    - [Deleting a Contact or Itinerary : `delete`](#deleting-a-contact-or-itinerary-delete)
+    - [Clearing All Entries : `clear`](#clearing-all-entries-clear)
+    - [Exiting TripScribe : `exit`](#exiting-tripscribe-exit)
 3. [Data Management](#data-management)
 4. [FAQ](#faq)
 5. [Known Issues](#known-issues)
@@ -356,14 +356,14 @@ Furthermore, certain edits can cause TripScribe to behave in unexpected ways (e.
 
 ## Command Summary
 
-| Action                                                 | Format                                                                                               | Example                                                                                                                                              |
-|--------------------------------------------------------|------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**help**](#viewing-help--help)                        | `help`                                                                                               | -                                                                                                                                                    |
-| [**addc**](#adding-a-contact-addc)                     | `addc r/ROLE n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`                                      | `addc r/client n/James Ho p/(+65) 22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`                                   |
-| [**addi**](#adding-an-itinerary-addi)                  | `addi n/ITINERARY_NAME dest/DESTINATION from/START_DATE to/END_DATE [c/CLIENT_ID]…​ [v/VENDOR_ID]…​` | `addi n/5D4N France Getaway dest/France from/2026-10-12 to/2026-10-17 c/236075fd-4619-4b41-8d9f-9d98eadedd89 v/5b8511e5-12d0-49fa-b1da-d84fa7df756a` |
-| [**list**](#listing-contacts-and-itineraries--list)    | `list /FLAG`                                                                                         | `list /contact`                                                                                                                                      |
-| [**edit**](#editing-a-contact--edit)                   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`                               | `edit 2 n/James Lee e/jameslee@example.com`                                                                                                          |
-| [**find**](#finding-contacts-by-name-find)             | `find KEYWORD [MORE_KEYWORDS]`                                                                       | `find James Jake`                                                                                                                                    |
-| [**delete**](#deleting-a-contact-or-itinerary--delete) | `delete /FLAG INDEX`                                                                                 | `delete /contact 3`                                                                                                                                  |
-| [**clear**](#clearing-all-entries--clear)              | `clear`                                                                                              | -                                                                                                                                                    |
-| [**exit**](#exiting-tripscribe--exit)                  | `exit`                                                                                               | -                                                                                                                                                    |
+| Action                                            | Format                                                                                               | Example                                                                                                                                              |
+|---------------------------------------------------|------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**help**](#viewing-help-help)                    | `help`                                                                                               | -                                                                                                                                                    |
+| [**addc**](#adding-a-contact-addc)                | `addc r/ROLE n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`                                      | `addc r/client n/James Ho p/(+65) 22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`                                   |
+| [**addi**](#adding-an-itinerary-addi)             | `addi n/ITINERARY_NAME dest/DESTINATION from/START_DATE to/END_DATE [c/CLIENT_ID]…​ [v/VENDOR_ID]…​` | `addi n/5D4N France Getaway dest/France from/2026-10-12 to/2026-10-17 c/236075fd-4619-4b41-8d9f-9d98eadedd89 v/5b8511e5-12d0-49fa-b1da-d84fa7df756a` |
+| [**list**](#listing-contacts-and-itineraries-list) | `list /FLAG`                                                                                         | `list /contact`                                                                                                                                      |
+| [**edit**](#editing-a-contact-edit)               | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`                               | `edit 2 n/James Lee e/jameslee@example.com`                                                                                                          |
+| [**find**](#finding-contacts-by-name-find)        | `find KEYWORD [MORE_KEYWORDS]`                                                                       | `find James Jake`                                                                                                                                    |
+| [**delete**](#deleting-a-contact-or-itinerary-delete) | `delete /FLAG INDEX`                                                                                 | `delete /contact 3`                                                                                                                                  |
+| [**clear**](#clearing-all-entries-clear)          | `clear`                                                                                              | -                                                                                                                                                    |
+| [**exit**](#exiting-tripscribe-exit)              | `exit`                                                                                               | -                                                                                                                                                    |
