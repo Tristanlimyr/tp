@@ -16,8 +16,18 @@ public class PersonMatchesFieldsPredicate implements Predicate<Person> {
     private final List<String> addressKeywords;
     private final List<String> tagKeywords;
 
+    /**
+     * Constructs a {@code PersonMatchesFieldsPredicate} with the specified keywords
+     * for each searchable field.
+     *
+     * @param nameKeywords The keywords to be matched against a person's name.
+     * @param phoneKeywords The keywords to be matched against a person's phone number.
+     * @param emailKeywords The keywords to be matched against a person's email address.
+     * @param addressKeywords The keywords to be matched against a person's address.
+     * @param tagKeywords The keywords to be matched against a person's tags.
+     */
     public PersonMatchesFieldsPredicate(List<String> nameKeywords,
-                                        List<String > phoneKeywords,
+                                        List<String> phoneKeywords,
                                         List<String> emailKeywords,
                                         List<String> addressKeywords,
                                         List<String> tagKeywords) {
