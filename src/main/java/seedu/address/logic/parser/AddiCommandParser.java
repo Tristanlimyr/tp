@@ -9,7 +9,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ITINERARY_START;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ITINERARY_VENDOR;
 
 import java.util.Set;
-import java.util.UUID;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddiCommand;
