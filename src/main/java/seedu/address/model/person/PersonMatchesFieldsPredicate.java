@@ -5,7 +5,10 @@ import java.util.function.Predicate;
 
 import seedu.address.commons.util.ToStringBuilder;
 
-
+/**
+ * Tests whether a {@code Person} matches the specified keywords in corresponding fields.
+ * A person is considered a match if both non-empty keyword list matches its corresponding field.
+ */
 public class PersonMatchesFieldsPredicate implements Predicate<Person> {
     private final List<String> nameKeywords;
     private final List<String> phoneKeywords;
@@ -65,6 +68,14 @@ public class PersonMatchesFieldsPredicate implements Predicate<Person> {
                 .toString();
     }
 
+    /**
+     * Checks if the given person's name contains any of the specified name keywords,
+     * ignoring case differences. If there are no name keywords, this method returns true.
+     *
+     * @param person The person whose name is to be checked.
+     * @return true if there are no name keywords, or if the person's name contains
+     *         at least one keyword; false otherwise.
+     */
     public boolean matchesName(Person person) {
         if (nameKeywords.isEmpty()) {
             return true;
@@ -74,6 +85,14 @@ public class PersonMatchesFieldsPredicate implements Predicate<Person> {
         }
     }
 
+    /**
+     * Checks if the given person's phone number contains any of the specified phone keywords,
+     * ignoring case differences. If there are no phone keywords, this method returns true.
+     *
+     * @param person The person whose phone number is to be checked.
+     * @return true if there are no phone keywords, or if the person's phone number contains
+     *         at least one keyword; false otherwise.
+     */
     public boolean matchesPhone(Person person) {
         if (phoneKeywords.isEmpty()) {
             return true;
@@ -84,6 +103,14 @@ public class PersonMatchesFieldsPredicate implements Predicate<Person> {
 
     }
 
+    /**
+     * Checks if the given person's email address contains any of the specified email keywords,
+     * ignoring case differences. If there are no email keywords, this method returns true.
+     *
+     * @param person The person whose email address is to be checked.
+     * @return true if there are no email keywords, or if the person's email address contains
+     *         at least one keyword; false otherwise.
+     */
     public boolean matchesEmail(Person person) {
         if (emailKeywords.isEmpty()) {
             return true;
@@ -93,6 +120,14 @@ public class PersonMatchesFieldsPredicate implements Predicate<Person> {
         }
     }
 
+    /**
+     * Checks if the given person's address contains any of the specified address keywords,
+     * ignoring case differences. If there are no address keywords, this method returns true.
+     *
+     * @param person The person whose address is to be checked.
+     * @return true if there are no address keywords, or if the person's address contains
+     *         at least one keyword; false otherwise.
+     */
     public boolean matchesAddress(Person person) {
         if (addressKeywords.isEmpty()) {
             return true;
@@ -102,6 +137,14 @@ public class PersonMatchesFieldsPredicate implements Predicate<Person> {
         }
     }
 
+    /**
+     * Checks if any tag of the given person contains any of the specified tag keywords,
+     * ignoring case differences. If there are no tag keywords, this method returns true.
+     *
+     * @param person The person whose tags are to be checked.
+     * @return true if there are no tag keywords, or if at least one tag of the person
+     *         contains at least one keyword; false otherwise.
+     */
     public boolean matchesTag(Person person) {
         if (tagKeywords.isEmpty()) {
             return true;
@@ -111,6 +154,4 @@ public class PersonMatchesFieldsPredicate implements Predicate<Person> {
                             .anyMatch(tag -> tag.tagName.toLowerCase().contains(keyword.toLowerCase())));
         }
     }
-
-
 }

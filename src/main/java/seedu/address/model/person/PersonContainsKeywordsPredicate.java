@@ -3,9 +3,12 @@ package seedu.address.model.person;
 import java.util.List;
 import java.util.function.Predicate;
 
-import seedu.address.commons.util.StringUtil;
 import seedu.address.commons.util.ToStringBuilder;
 
+/**
+ * Represents a predicate that performs a general search on a {@code Person}.
+ * A person matches if any given keyword is found in any searchable field.
+ */
 public class PersonContainsKeywordsPredicate implements Predicate<Person> {
     private final List<String> keywords;
 
@@ -42,26 +45,61 @@ public class PersonContainsKeywordsPredicate implements Predicate<Person> {
         return new ToStringBuilder(this).add("keywords", keywords).toString();
     }
 
+    /**
+     * Checks if the given person’s name contains any of the specified keywords,
+     * ignoring case differences.
+     *
+     * @param person The person whose name is to be checked.
+     * @return true if the person's name contains at least one keyword, false otherwise.
+     */
     public boolean matchesName(Person person) {
         return keywords.stream()
                 .anyMatch(keyword -> person.getName().fullName.toLowerCase().contains(keyword.toLowerCase()));
     }
 
+    /**
+     * Checks if the given person’s phone number contains any of the specified keywords,
+     * ignoring case differences.
+     *
+     * @param person The person whose phone number is to be checked.
+     * @return true if the person's phone number contains at least one keyword, false otherwise.
+     */
     public boolean matchesPhone(Person person) {
         return keywords.stream()
                 .anyMatch(keyword -> person.getPhone().value.toLowerCase().contains(keyword.toLowerCase()));
     }
 
+    /**
+     * Checks if the given person’s email address contains any of the specified keywords,
+     * ignoring case differences.
+     *
+     * @param person The person whose email address is to be checked.
+     * @return true if the person's email address contains at least one keyword, false otherwise.
+     */
     public boolean matchesEmail(Person person) {
         return keywords.stream()
                 .anyMatch(keyword -> person.getEmail().value.toLowerCase().contains(keyword.toLowerCase()));
     }
 
+    /**
+     * Checks if the given person’s address contains any of the specified keywords,
+     * ignoring case differences.
+     *
+     * @param person The person whose address is to be checked.
+     * @return true if the person's address contains at least one keyword, false otherwise.
+     */
     public boolean matchesAddress(Person person) {
         return keywords.stream()
                 .anyMatch(keyword -> person.getAddress().value.toLowerCase().contains(keyword.toLowerCase()));
     }
 
+    /**
+     * Checks if any tag of the given person contains any of the specified keywords,
+     * ignoring case differences.
+     *
+     * @param person The person whose tags are to be checked.
+     * @return true if at least one tag of the person contains at least one keyword, false otherwise.
+     */
     public boolean matchesTag(Person person) {
         return keywords.stream()
                 .anyMatch(keyword -> person.getTags().stream()

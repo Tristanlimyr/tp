@@ -41,7 +41,14 @@ public class FindCommandParser implements Parser<FindCommand> {
         return parseFieldSearch(args);
     }
 
-
+    /**
+     * Parses a field-based find command and returns a {@code FindCommand}.
+     * The input must not contain any preamble and must contain at least one supported prefixed field.
+     *
+     * @param trimmedArgs User input with leading and trailing whitespace removed.
+     * @return A {@code FindCommand} containing a {@code PersonMatchesFieldsPredicate}.
+     * @throws ParseException If the input contains a preamble or does not contain any searchable prefixed field.
+     */
     private FindCommand parseFieldSearch(String trimmedArgs) throws ParseException {
 
         ArgumentMultimap argMultimap =
@@ -69,7 +76,13 @@ public class FindCommandParser implements Parser<FindCommand> {
                 nameKeywords, phoneKeywords, emailKeywords, addressKeywords, tagKeywords));
     }
 
-
+    /**
+     * Returns true if the given input should be treated as a global search.
+     * A global search is one that does not contain any supported search prefixes.
+     *
+     * @param trimmedArgs User input with leading and trailing whitespace removed.
+     * @return True if the input does not contain any supported field-search prefixes, false otherwise.
+     */
     public boolean isGlobalSearch(String trimmedArgs) {
         return !(trimmedArgs.contains(" n/") || trimmedArgs.startsWith("n/")
                 || trimmedArgs.contains(" p/") || trimmedArgs.startsWith("p/")
