@@ -25,6 +25,7 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.ShowCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.itinerary.Itinerary;
 import seedu.address.model.person.Person;
@@ -122,6 +123,12 @@ public class AddressBookParserTest {
         AddiCommand command = (AddiCommand) parser.parseCommand("addi n/5D4N Trip to France dest/France "
                                                                 + "from/2024-12-01 to/2024-12-05");
         assertEquals(new AddiCommand(itinerary), command);
+    }
+
+    @Test
+    public void parseCommand_show() throws Exception {
+        ShowCommand command = (ShowCommand) parser.parseCommand(ShowCommand.COMMAND_WORD + " 1");
+        assertEquals(new ShowCommand(INDEX_FIRST), command);
     }
 
     @Test
