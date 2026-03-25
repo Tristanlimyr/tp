@@ -26,6 +26,7 @@ TripScribe lets you manage contacts and itineraries on your desktop using keyboa
     - [Adding an Itinerary : `addi`](#adding-an-itinerary-addi)
     - [Listing Contacts and Itineraries : `list`](#listing-contacts-and-itineraries-list)
     - [Editing a Contact : `edit`](#editing-a-contact-edit)
+    - [Showing details of an itinerary: `show`](#showing-contacts-by-itinerary-show)
     - [Finding Contacts by Name : `find`](#finding-contacts-by-name-find)
     - [Deleting a Contact or Itinerary : `delete`](#deleting-a-contact-or-itinerary-delete)
     - [Clearing All Entries : `clear`](#clearing-all-entries-clear)
