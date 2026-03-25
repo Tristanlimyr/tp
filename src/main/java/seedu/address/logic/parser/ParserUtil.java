@@ -9,7 +9,6 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.id.Id;
 import seedu.address.model.itinerary.DateRange;
 import seedu.address.model.itinerary.Destination;
 import seedu.address.model.itinerary.ItineraryName;
@@ -191,33 +190,15 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String id} into a {@code Id}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code id} is invalid.
+     * Parses {@code Collection<String> indices} into a {@code Set<Indexes>}.
      */
-    public static Id parseId(String id) throws ParseException {
-        requireNonNull(id);
-        String trimmedUuid = id.trim();
-        Id result;
-        try {
-            result = new Id(trimmedUuid);
-        } catch (IllegalArgumentException e) {
-            throw new ParseException("Invalid id in input: " + trimmedUuid);
+    public static Set<Index> parseIndices(Collection<String> uuidIndices) throws ParseException {
+        requireNonNull(uuidIndices);
+        final Set<Index> indices = new HashSet<>();
+        for (String idx : uuidIndices) {
+            indices.add(parseIndex(idx));
         }
-        return result;
-    }
-
-    /**
-     * Parses {@code Collection<String> ids} into a {@code Set<Id>}.
-     */
-    public static Set<Id> parseIds(Collection<String> ids) throws ParseException {
-        requireNonNull(ids);
-        final Set<Id> idSet = new HashSet<>();
-        for (String id : ids) {
-            idSet.add(parseId(id));
-        }
-        return idSet;
+        return indices;
     }
 
 
