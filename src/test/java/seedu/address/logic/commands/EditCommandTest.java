@@ -292,7 +292,7 @@ public class EditCommandTest {
         // different flag -> returns false
         assertFalse(standardPersonCommand.equals(new EditCommand(INDEX_FIRST, EditCommand.EditType.ITINERARY,
                 DESC_AMY, null)));
-        
+
         // different personDescriptor -> returns false
         assertFalse(standardPersonCommand.equals(new EditCommand(INDEX_FIRST, EditCommand.EditType.CONTACT,
                 DESC_BOB, null)));
@@ -328,7 +328,7 @@ public class EditCommandTest {
         assertFalse(standardItineraryCommand.equals(new EditCommand(INDEX_SECOND, EditCommand.EditType.ITINERARY,
                 null, DESC_BALI)));
     }
-    
+
     @Test
     public void toStringMethod() {
         Index index = Index.fromOneBased(1);
@@ -343,5 +343,4 @@ public class EditCommandTest {
                 + "}";
         assertEquals(expected, editCommand.toString());
     }
-
 }

@@ -7,12 +7,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ITINERARY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ITINERARY_START;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ITINERARY_VENDOR;
 
-import java.util.Set;
-
 import seedu.address.logic.commands.AddiCommand;
 import seedu.address.logic.commands.EditCommand.EditItineraryDescriptor;
 import seedu.address.model.itinerary.Itinerary;
-import seedu.address.model.tag.Tag;
 
 /**
  * A utility class for itinerary.
@@ -45,10 +42,14 @@ public class ItineraryUtil {
      */
     public static String getEditItineraryDescriptorDetails(EditItineraryDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
-        descriptor.getItineraryName().ifPresent(itineraryName -> sb.append(PREFIX_ITINERARY_NAME).append(itineraryName.fullName).append(" "));
-        descriptor.getDestination().ifPresent(destination -> sb.append(PREFIX_ITINERARY_DESTINATION).append(destination.toString()).append(" "));
-        descriptor.getStartDate().ifPresent(startDate -> sb.append(PREFIX_ITINERARY_START).append(startDate.toString()).append(" "));
-        descriptor.getEndDate().ifPresent(endDate -> sb.append(PREFIX_ITINERARY_END).append(endDate.toString()).append(" "));
+        descriptor.getItineraryName().ifPresent(itineraryName ->
+                sb.append(PREFIX_ITINERARY_NAME).append(itineraryName.fullName).append(" "));
+        descriptor.getDestination().ifPresent(destination ->
+                sb.append(PREFIX_ITINERARY_DESTINATION).append(destination.toString()).append(" "));
+        descriptor.getStartDate().ifPresent(startDate ->
+                sb.append(PREFIX_ITINERARY_START).append(startDate.toString()).append(" "));
+        descriptor.getEndDate().ifPresent(endDate ->
+                sb.append(PREFIX_ITINERARY_END).append(endDate.toString()).append(" "));
         return sb.toString();
     }
 }

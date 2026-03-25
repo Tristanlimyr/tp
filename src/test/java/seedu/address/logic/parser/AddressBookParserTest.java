@@ -59,7 +59,7 @@ public class AddressBookParserTest {
         DeleteCommand personCommand = (DeleteCommand) parser.parseCommand(
                 DeleteCommand.COMMAND_WORD + " " + DeleteCommand.CONTACT_FLAG + " " + INDEX_FIRST.getOneBased());
         assertEquals(new DeleteCommand(DeleteCommand.DeleteType.CONTACT, INDEX_FIRST), personCommand);
-        
+
         DeleteCommand itineraryCommand = (DeleteCommand) parser.parseCommand(
                 DeleteCommand.COMMAND_WORD + " " + DeleteCommand.ITINERARY_FLAG + " " + INDEX_FIRST.getOneBased());
         assertEquals(new DeleteCommand(DeleteCommand.DeleteType.ITINERARY, INDEX_FIRST), itineraryCommand);

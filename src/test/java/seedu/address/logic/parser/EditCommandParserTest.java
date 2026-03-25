@@ -264,7 +264,7 @@ public class EditCommandParserTest {
         // no index, no flag and no field specified
         assertParseFailure(parser, "", MESSAGE_INVALID_FORMAT);
     }
-    
+
     @Test
     public void parse_itineraryInvalidPreamble_failure() {
         // negative index
