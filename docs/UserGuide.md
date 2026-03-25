@@ -8,6 +8,8 @@
 
 TripScribe lets you manage contacts and itineraries on your desktop using keyboard commands with an informative Graphical User Interface (GUI). If you type fast, you can plan and organize your trips much faster with TripScribe than traditional mouse-based apps.
 
+**Target User:** TripScribe is an application meant for operations executives at small to mid-sized tour agencies who manages client bookings and itineraries. Their role involves frequently updating itineraries, client details and vendor booking notes, while coordinating across multiple groups such as transport providers, tour guides, vendors, and tourists. 
+
 **New to TripScribe?** Start with [Quick Start](#quick-start) to install the app and try your first commands.
 
 **Looking for a specific command?** Jump to the [Command Summary](#command-summary) for a quick reference, or pick a feature from the table of contents below.
