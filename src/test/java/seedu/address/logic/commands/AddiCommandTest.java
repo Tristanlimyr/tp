@@ -12,7 +12,9 @@ import static seedu.address.testutil.TypicalItineraries.FRANCE_TRIP;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Set;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -61,6 +63,33 @@ public class AddiCommandTest {
 
         assertEquals(String.format(AddiCommand.MESSAGE_SUCCESS, Messages.format(validItinerary)),
                 commandResult.getFeedbackToUser());
+        assertEquals(Arrays.asList(validItinerary), modelStub.itineraries);
+    }
+
+    @Test
+    public void execute_itineraryWithClientAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubWithClient modelStub = new ModelStubWithClient();
+        Itinerary validItinerary = new ItineraryBuilder().build();
+
+        CommandResult commandResult = new AddiCommand(validItinerary, new HashSet<>(Set.of(INDEX_FIRST)),
+                                                      new HashSet<>()).execute(modelStub);
+
+        assertEquals(String.format(AddiCommand.MESSAGE_SUCCESS, Messages.format(validItinerary)),
+                commandResult.getFeedbackToUser());
+        assertEquals(Arrays.asList(validItinerary), modelStub.itineraries);
+    }
+
+    @Test
+    public void execute_itineraryWithVendorAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubWithVendor modelStub = new ModelStubWithVendor();
+        Itinerary validItinerary = new ItineraryBuilder().build();
+
+        CommandResult commandResult = new AddiCommand(validItinerary, new HashSet<>(),
+                                                      new HashSet<>(Set.of(INDEX_FIRST))).execute(modelStub);
+
+        assertEquals(String.format(AddiCommand.MESSAGE_SUCCESS, Messages.format(validItinerary)),
+                commandResult.getFeedbackToUser());
+        assertEquals(Arrays.asList(validItinerary), modelStub.itineraries);
     }
 
     @Test
@@ -122,15 +151,18 @@ public class AddiCommandTest {
         Itinerary france = new ItineraryBuilder().build();
         Itinerary bali = new ItineraryBuilder().withName("3D2N Bali").withDestination("Bali")
                             .withDateRange("2020-02-01", "2020-02-04").build();
-        AddiCommand addFranceCommand = new AddiCommand(france, new HashSet<>(), new HashSet<>());
+        AddiCommand addFranceCommand = new AddiCommand(france, new HashSet<>(Set.of(INDEX_FIRST)),
+                                                               new HashSet<>(Set.of(INDEX_SECOND)));
         AddiCommand addBaliCommand = new AddiCommand(bali, new HashSet<>(), new HashSet<>());
 
         // same object -> returns true
         assertTrue(addFranceCommand.equals(addFranceCommand));
 
         // same values -> returns true
-        AddiCommand addFranceCommandCopy = new AddiCommand(france, new HashSet<>(), new HashSet<>());
+        AddiCommand addFranceCommandCopy = new AddiCommand(france, new HashSet<>(Set.of(INDEX_FIRST)),
+                                                                   new HashSet<>(Set.of(INDEX_SECOND)));
         assertTrue(addFranceCommand.equals(addFranceCommandCopy));
+
 
         // different types -> returns false
         assertFalse(addFranceCommand.equals(1));
@@ -138,8 +170,17 @@ public class AddiCommandTest {
         // null -> returns false
         assertFalse(addFranceCommand.equals(null));
 
-        // different person -> returns false
+        // different itinerary -> returns false
         assertFalse(addFranceCommand.equals(addBaliCommand));
+
+        // different index sets -> returns false
+        AddiCommand addFranceDifferentClientIndices = new AddiCommand(france, new HashSet<>(Set.of(INDEX_THIRD)),
+                                                                      new HashSet<>());
+        assertFalse(addFranceCommand.equals(addFranceDifferentClientIndices));
+
+        AddiCommand addFranceDifferentVendorIndices = new AddiCommand(france, new HashSet<>(Set.of(INDEX_FIRST)),
+                                                                      new HashSet<>());
+        assertFalse(addFranceCommand.equals(addFranceDifferentVendorIndices));
 
     }
 
