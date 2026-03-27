@@ -14,25 +14,25 @@
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
          title="TripScribe" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
     <icons>
-        <Image url="@/images/address_book_32.png" />
+        <Image url="@/images/address_book_32.png"/>
     </icons>
     <scene>
         <Scene>
             <stylesheets>
-                <URL value="@DarkTheme.css" />
-                <URL value="@Extensions.css" />
+                <URL value="@DarkTheme.css"/>
+                <URL value="@Extensions.css"/>
             </stylesheets>
 
             <VBox styleClass="app-root">
 
                 <VBox styleClass="top-bar">
-                    <Label text="TripScribe" styleClass="logo-label" />
+                    <Label text="TripScribe" styleClass="logo-label"/>
                     <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
                         <Menu mnemonicParsing="false" text="File">
-                            <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
+                            <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit"/>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Help">
-                            <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
+                            <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help"/>
                         </Menu>
                     </MenuBar>
                 </VBox>
@@ -40,41 +40,41 @@
                 <VBox styleClass="command-section" VBox.vgrow="NEVER">
                     <StackPane fx:id="commandBoxPlaceholder">
                         <padding>
-                            <Insets top="8" right="12" bottom="8" left="12" />
+                            <Insets top="8" right="12" bottom="8" left="12"/>
                         </padding>
                     </StackPane>
                 </VBox>
 
                 <VBox styleClass="result-section" VBox.vgrow="NEVER">
                     <StackPane fx:id="resultDisplayPlaceholder"
-                               minHeight="70" prefHeight="70" maxHeight="70" />
+                               minHeight="70" prefHeight="70" maxHeight="70"/>
                 </VBox>
 
                 <VBox VBox.vgrow="ALWAYS" styleClass="panels-area">
 
                     <VBox fx:id="personList" styleClass="panel-container" VBox.vgrow="ALWAYS" minHeight="0">
-                        <Label text="Contacts" styleClass="panel-header-label" />
+                        <Label text="Contacts" styleClass="panel-header-label"/>
                         <VBox.margin>
                             <Insets top="6" right="10" bottom="6" left="10"/>
                         </VBox.margin>
-                        <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS" minHeight="0" />
+                        <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS" minHeight="0"/>
                     </VBox>
                     <padding>
-                        <Insets top="10" right="10" bottom="10" left="10" />
+                        <Insets top="10" right="10" bottom="10" left="10"/>
                     </padding>
-                    <VBox fx:id="itineraryList" styleClass="panel-container"  VBox.vgrow="ALWAYS"  minHeight="0">
-                        <Label text="Itineraries" styleClass="panel-header-label" />
+                    <VBox fx:id="itineraryList" styleClass="panel-container" VBox.vgrow="ALWAYS" minHeight="0">
+                        <Label text="Itineraries" styleClass="panel-header-label"/>
                         <VBox.margin>
                             <Insets top="6" right="10" bottom="6" left="10"/>
                         </VBox.margin>
                         <StackPane fx:id="itineraryListPanelPlaceholder"
                                    VBox.vgrow="ALWAYS"
-                                   minHeight="0" />
+                                   minHeight="0"/>
                     </VBox>
 
                 </VBox>
 
-                <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
+                <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER"/>
 
             </VBox>
         </Scene>

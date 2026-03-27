@@ -11,18 +11,20 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.stage.Stage?>
 
-<fx:root resizable="true" title="Help" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root resizable="true" title="Help" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/17"
+         xmlns:fx="http://javafx.com/fxml/1">
     <icons>
-        <Image url="@/images/help_icon.png" />
+        <Image url="@/images/help_icon.png"/>
     </icons>
     <scene>
         <Scene>
             <stylesheets>
-                <URL value="@HelpWindow.css" />
-                <URL value="@DarkTheme.css" />
+                <URL value="@HelpWindow.css"/>
+                <URL value="@DarkTheme.css"/>
             </stylesheets>
             <AnchorPane fx:id="mainLayout" styleClass="app-root">
-                <VBox AnchorPane.topAnchor="10" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" spacing="10">
+                <VBox AnchorPane.topAnchor="10" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10"
+                      AnchorPane.rightAnchor="10" spacing="10">
                     <VBox styleClass="panel-container" VBox.vgrow="ALWAYS">
                         <Label text="Command Summary" styleClass="panel-header-label"/>
                         <ScrollPane fx:id="helpScrollPane" fitToWidth="true">
@@ -34,7 +36,8 @@
                         </ScrollPane>
 
                         <HBox alignment="CENTER_RIGHT" fx:id="bottomBar" styleClass="help-footer">
-                            <Button fx:id="copyButton" mnemonicParsing="false" onAction="#copyUrl" text="Copy User Guide URL"/>
+                            <Button fx:id="copyButton" mnemonicParsing="false" onAction="#copyUrl"
+                                    text="Copy User Guide URL"/>
                         </HBox>
 
                     </VBox>

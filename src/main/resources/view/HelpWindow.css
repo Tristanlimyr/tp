@@ -48,7 +48,6 @@
     -fx-text-fill: white;
 }
 
-/* ScrollPane cleanup */
 #helpScrollPane {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
