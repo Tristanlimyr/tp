@@ -162,10 +162,10 @@ public class EditItineraryCommand extends EditCommand {
         @Override
         public String toString() {
             return new ToStringBuilder(this)
-                    .add("itinerary name", itineraryName)
+                    .add("itineraryName", itineraryName)
                     .add("destination", destination)
-                    .add("start date", startDate)
-                    .add("end date", endDate)
+                    .add("startDate", startDate)
+                    .add("endDate", endDate)
                     .toString();
         }
     }

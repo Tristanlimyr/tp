@@ -262,8 +262,13 @@ public class EditCommandTest {
 
     @Test
     public void equals() {
-        // edit person command
         final EditPersonCommand standardPersonCommand = new EditPersonCommand(INDEX_FIRST, DESC_AMY);
+        final EditCommand standardItineraryCommand = new EditItineraryCommand(INDEX_FIRST, DESC_FRANCE);
+
+        // different object -> returns false
+        assertFalse(standardPersonCommand.equals(standardItineraryCommand));
+
+        // edit person command tests
 
         // same person values -> returns true
         EditPersonDescriptor copyPersonDescriptor = new EditPersonDescriptor(DESC_AMY);
@@ -282,14 +287,10 @@ public class EditCommandTest {
         // different index -> returns false
         assertFalse(standardPersonCommand.equals(new EditPersonCommand(INDEX_SECOND, DESC_AMY)));
 
-        // different flag -> returns false
-        assertFalse(standardPersonCommand.equals(new EditPersonCommand(INDEX_FIRST, DESC_AMY)));
-
         // different personDescriptor -> returns false
         assertFalse(standardPersonCommand.equals(new EditPersonCommand(INDEX_FIRST, DESC_BOB)));
 
-        // edit itinerary command
-        final EditCommand standardItineraryCommand = new EditItineraryCommand(INDEX_FIRST, DESC_FRANCE);
+        // edit itinerary command tests
 
         // same itinerary values -> returns true
         EditItineraryDescriptor copyItineraryDescriptor = new EditItineraryDescriptor(DESC_FRANCE);
@@ -308,9 +309,6 @@ public class EditCommandTest {
         // different index -> returns false
         assertFalse(standardItineraryCommand.equals(new EditItineraryCommand(INDEX_SECOND, DESC_FRANCE)));
 
-        // different flag -> returns false
-        assertFalse(standardItineraryCommand.equals(new EditItineraryCommand(INDEX_SECOND, DESC_FRANCE)));
-
         // different itineraryDescriptor -> returns false
         assertFalse(standardItineraryCommand.equals(new EditItineraryCommand(INDEX_SECOND, DESC_BALI)));
     }
@@ -318,12 +316,21 @@ public class EditCommandTest {
     @Test
     public void toStringMethod() {
         Index index = Index.fromOneBased(1);
+
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
-        EditCommand editPersonCommand = new EditPersonCommand(index, editPersonDescriptor);
-        String expected = EditCommand.class.getCanonicalName()
+        EditPersonCommand editPersonCommand = new EditPersonCommand(index, editPersonDescriptor);
+        String expectedPersonOutput = EditPersonCommand.class.getCanonicalName()
                 + "{index=" + index
-                + "editPersonDescriptor=" + editPersonDescriptor
+                + ", editPersonDescriptor=" + editPersonDescriptor
                 + "}";
-        assertEquals(expected, editPersonCommand.toString());
+        assertEquals(expectedPersonOutput, editPersonCommand.toString());
+
+        EditItineraryDescriptor editItineraryDescriptor = new EditItineraryDescriptor();
+        EditItineraryCommand editItineraryCommand = new EditItineraryCommand(index, editItineraryDescriptor);
+        String expectedItineraryOutput = EditItineraryCommand.class.getCanonicalName()
+                + "{index=" + index
+                + ", editItineraryDescriptor=" + editItineraryDescriptor
+                + "}";
+        assertEquals(expectedItineraryOutput, editItineraryCommand.toString());
     }
 }
