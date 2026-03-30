@@ -13,6 +13,7 @@ import static seedu.address.testutil.TypicalPersons.IDA;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -20,6 +21,8 @@ import org.junit.jupiter.api.io.TempDir;
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.person.Person;
+import seedu.address.testutil.PersonBuilder;
 
 public class JsonAddressBookStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");
@@ -32,7 +35,7 @@ public class JsonAddressBookStorageTest {
         assertThrows(NullPointerException.class, () -> readAddressBook(null));
     }
 
-    private java.util.Optional<ReadOnlyAddressBook> readAddressBook(String filePath) throws Exception {
+    private Optional<ReadOnlyAddressBook> readAddressBook(String filePath) throws Exception {
         return new JsonAddressBookStorage(Paths.get(filePath)).readAddressBook(addToTestDataPathIfNotNull(filePath));
     }
 
@@ -53,14 +56,21 @@ public class JsonAddressBookStorageTest {
     }
 
     @Test
-    public void readAddressBook_invalidPersonAddressBook_throwDataLoadingException() {
-        assertThrows(DataLoadingException.class, () -> readAddressBook("invalidPersonAddressBook.json"));
+    public void readAddressBook_invalidPersonAddressBook_emptyResult() throws Exception {
+        assertFalse(readAddressBook("invalidPersonAddressBook").isPresent());
     }
 
     @Test
-    public void readAddressBook_invalidAndValidPersonAddressBook_throwDataLoadingException() {
-        assertThrows(DataLoadingException.class, () -> readAddressBook("invalidAndValidPersonAddressBook.json"));
+    public void readAddressBook_invalidAndValidPersonAddressBook_hasOnlyValidPersons() throws Exception {
+        AddressBook expectedAddressBook = new AddressBook();
+        Person expectedPerson = new PersonBuilder().withName("Valid Person")
+                .withId("f09220ed-c91d-43ad-9648-2591d7fc4a8a").withPhone("(+65) 9482424").withEmail("hans@example.com")
+                .withAddress("4th street").build();
+
+        expectedAddressBook.addPerson(expectedPerson);
+        assertEquals(Optional.of(expectedAddressBook), readAddressBook("invalidAndValidPersonAddressBook.json"));
     }
+
 
     @Test
     public void readAndSaveAddressBook_allInOrder_success() throws Exception {
