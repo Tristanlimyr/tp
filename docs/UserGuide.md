@@ -25,10 +25,10 @@ TripScribe is a desktop app built for **operations executives at tour agencies**
     - [Adding a Contact : `addc`](#adding-a-contact-addc)
     - [Adding an Itinerary : `addi`](#adding-an-itinerary-addi)
     - [Listing Contacts and Itineraries : `list`](#listing-contacts-and-itineraries-list)
-    - [Editing a Contact : `edit`](#editing-a-contact-edit)
+    - [Editing Contacts and Itineraries : `edit`](#editing-contacts-and-itineraries--edit)
     - [Showing details of an itinerary: `show`](#showing-contacts-by-itinerary-show)
-    - [Finding Contacts by Name : `find`](#finding-contacts-by-name-find)
-    - [Deleting a Contact or Itinerary : `delete`](#deleting-a-contact-or-itinerary-delete)
+    - [Finding Contacts by Name : `find`](#finding-contacts-by-keywords-find)
+    - [Deleting a Contact or Itinerary : `delete`](#deleting-a-contact-or-itinerary--delete)
     - [Clearing All Entries : `clear`](#clearing-all-entries-clear)
     - [Exiting TripScribe : `exit`](#exiting-tripscribe-exit)
     - [Command Summary](#command-summary)
@@ -224,7 +224,7 @@ list /FLAG
 * `list /itinerary`
 * `list /all`
 
-### Editing a Contact : `edit`
+### Editing Contacts and Itineraries : `edit`
 
 Edit an existing contact or itinerary in TripScribe.
 
@@ -327,12 +327,16 @@ Example: `find Hans p/9876` is invalid.
 </box>
 
 **Examples:**
+
+General Search:
 * `find John` returns contacts whose name, phone, email, address, or tags contain `John`.
 * `find alex david` returns contacts containing `alex` or `david` in any searchable field.
+
+Multi-Field Search:
 * `find e/example.com` returns contacts with `example.com` in their saved email.
-* `find n/alex david` returns contacts whose names contain `alex` or `david`
+* `find n/alex david` returns contacts whose names contain `alex` or `david`.
 * `find n/alex p/996` returns contacts whose names contain `alex` and whose phone numbers contain `996`.
-* `find n/alex david p/992 281` returns contacts whose names contain `alex` or `david` and phone numbers contain `992` or `281` <br>
+* `find n/alex david p/992 281` returns contacts whose names contain `alex` or `david` and phone numbers contain `992` or `281`. <br>
 
 ### Deleting a Contact or Itinerary : `delete`
 
@@ -384,18 +388,18 @@ exit
 
 ### Command Summary
 
-| Action                                                | Format                                                                                                                                                               | Example                                                                                                            |
-|-------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
-| [**help**](#viewing-help-help)                        | `help`                                                                                                                                                               | -                                                                                                                  |
-| [**addc**](#adding-a-contact-addc)                    | `addc r/ROLE n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`                                                                                                      | `addc r/client n/James Ho p/(+65) 22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
-| [**addi**](#adding-an-itinerary-addi)                 | `addi n/ITINERARY_NAME dest/DESTINATION from/START_DATE to/END_DATE [c/CLIENT_INDEX]…​ [v/VENDOR_INDEX]…​`                                                           | `addi n/5D4N France Getaway dest/France from/2026-10-12 to/2026-10-17 c/2 v/4`                                     |
-| [**list**](#listing-contacts-and-itineraries-list)    | `list /FLAG`                                                                                                                                                         | `list /contact`                                                                                                    |
-| [**edit**](#editing-a-contact-edit)                   | `edit /contact [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​` </br>  `edit /itinerary INDEX [n/NAME] [dest/DESTINATION] [from/START_DATE] [to/END_DATE]` | `edit 2 n/James Lee e/jameslee@example.com`                                                                        |
-| [**show**](#showing-contacts-by-itinerary-show)       | `show INDEX`                                                                                                                                                         | `show 2`                                                                                                           |
-| [**find**](#finding-contacts-by-name-find)            | `find KEYWORD [MORE_KEYWORDS]`  </br> `find [PREFIX/KEYWORD]`                                                                                                        | `find James Jake` </br> `find a/Apple Street`                                                                      |
-| [**delete**](#deleting-a-contact-or-itinerary-delete) | `delete /FLAG INDEX`                                                                                                                                                 | `delete /contact 3`                                                                                                |
-| [**clear**](#clearing-all-entries-clear)              | `clear`                                                                                                                                                              | -                                                                                                                  |
-| [**exit**](#exiting-tripscribe-exit)                  | `exit`                                                                                                                                                               | -                                                                                                                  |
+| Action                                                 | Format                                                                                                                                                               | Example                                                                                                            |
+|--------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
+| [**help**](#viewing-help--help)                        | `help`                                                                                                                                                               | -                                                                                                                  |
+| [**addc**](#adding-a-contact-addc)                     | `addc r/ROLE n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`                                                                                                      | `addc r/client n/James Ho p/(+65) 22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
+| [**addi**](#adding-an-itinerary-addi)                  | `addi n/ITINERARY_NAME dest/DESTINATION from/START_DATE to/END_DATE [c/CLIENT_INDEX]…​ [v/VENDOR_INDEX]…​`                                                           | `addi n/5D4N France Getaway dest/France from/2026-10-12 to/2026-10-17 c/2 v/4`                                     |
+| [**list**](#listing-contacts-and-itineraries--list)    | `list /FLAG`                                                                                                                                                         | `list /contact`                                                                                                    |
+| [**edit**](#editing-contacts-and-itineraries--edit)    | `edit /contact [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​` </br>  `edit /itinerary INDEX [n/NAME] [dest/DESTINATION] [from/START_DATE] [to/END_DATE]` | `edit 2 n/James Lee e/jameslee@example.com`                                                                        |
+| [**show**](#showing-contacts-by-itinerary-show)        | `show INDEX`                                                                                                                                                         | `show 2`                                                                                                           |
+| [**find**](#finding-contacts-by-keywords-find)         | `find KEYWORD [MORE_KEYWORDS]`  </br> `find [PREFIX/KEYWORD]`                                                                                                        | `find James Jake` </br> `find n/Jane a/Apple Street`                                                               |
+| [**delete**](#deleting-a-contact-or-itinerary--delete) | `delete /FLAG INDEX`                                                                                                                                                 | `delete /contact 3`                                                                                                |
+| [**clear**](#clearing-all-entries--clear)              | `clear`                                                                                                                                                              | -                                                                                                                  |
+| [**exit**](#exiting-tripscribe--exit)                  | `exit`                                                                                                                                                               | -                                                                                                                  |
 
 --------------------------------------------------------------------------------------------------------------------
 
