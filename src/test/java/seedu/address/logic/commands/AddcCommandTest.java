@@ -191,6 +191,11 @@ public class AddcCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        @Override
+        public void updateBothLists(Predicate<Person> personPredicate, Predicate<Itinerary> itineraryPredicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
     }
 
     /**
