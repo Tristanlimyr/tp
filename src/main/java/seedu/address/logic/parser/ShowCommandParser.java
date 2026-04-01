@@ -28,7 +28,7 @@ public class ShowCommandParser implements Parser<ShowCommand> {
             if (pe.getMessage().equals(MESSAGE_NOT_INTEGER)) {
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ShowCommand.MESSAGE_USAGE));
             } else {
-                throw new ParseException(MESSAGE_NOT_INTEGER);
+                throw pe;
             }
         }
         return new ShowCommand(index);
