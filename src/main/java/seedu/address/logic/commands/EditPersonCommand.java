@@ -67,7 +67,8 @@ public class EditPersonCommand extends EditCommand {
             model.updatePersonRole(editedPerson.getId(), editedPerson.getRole());
         }
 
-        model.updateBothLists(PREDICATE_SHOW_ALL_CONTACTS, PREDICATE_SHOW_ALL_ITINERARIES);
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_CONTACTS);
+        model.updateFilteredItineraryList(PREDICATE_SHOW_ALL_ITINERARIES);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
     }
 

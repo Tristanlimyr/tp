@@ -56,7 +56,8 @@ public class EditItineraryCommand extends EditCommand {
         }
 
         model.setItinerary(itineraryToEdit, editedItinerary);
-        model.updateBothLists(PREDICATE_SHOW_ALL_CONTACTS, PREDICATE_SHOW_ALL_ITINERARIES);
+        model.updateFilteredItineraryList(PREDICATE_SHOW_ALL_ITINERARIES);
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_CONTACTS);
         return new CommandResult(String.format(MESSAGE_EDIT_ITINERARY_SUCCESS, Messages.format(editedItinerary)));
     }
 
