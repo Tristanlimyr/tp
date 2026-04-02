@@ -24,7 +24,7 @@ import seedu.address.model.tag.Tag;
  */
 public class ParserUtil {
 
-    public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_INDEX = "Index is not a positive, non-zero number.";
     public static final String MESSAGE_NOT_INTEGER = "The given index is not an integer.";
 
     /**
