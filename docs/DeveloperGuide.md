@@ -12,7 +12,6 @@
 --------------------------------------------------------------------------------------------------------------------
 ## Table of Contents
 
-- [TripScribe Developer Guide](#tripscribe-developer-guide)
 - [Acknowledgements](#acknowledgements)
 - [Setting up, getting started](#setting-up-getting-started)
 - [Design](#design)
