@@ -397,8 +397,6 @@ Clear all contacts and itineraries from TripScribe.
 ```
 clear
 ```
-<div style="page-break-after: always;"></div>
-
 
 ### Exiting TripScribe : `exit`
 
@@ -447,10 +445,10 @@ If you save the file in an invalid format, TripScribe will discard all invalid d
 Furthermore, certain edits can cause TripScribe to remove entries (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you know what you are doing.
 
 </box>
-<div style="page-break-after: always;"></div>
 
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## FAQ
 
@@ -465,6 +463,6 @@ Furthermore, certain edits can cause TripScribe to remove entries (e.g., if a va
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. 
    * To fix this, delete the `preferences.json` file created by TripScribe before running the application again.
-<br><br>
+<br>
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. 
    * To fix this, close the minimized Help Window and type the command again.
