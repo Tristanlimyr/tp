@@ -480,13 +480,21 @@ testers are expected to do more *exploratory* testing.
    Expected: TripScribe should still launch and function like normal, but with default set of data in view.
 
 2. Dealing with incorrect fields in data file
-   1. Prerequisites: Data file is in data folder, at least 1 field in an object is not in the correct format. 
-   2. Test case: 1 field in a `Person` is in the wrong format. <br> 
-      Expected: Contact should not be in TripScribe when app is launched. Any itineraries holding the `Id` of the person lose that `Id` <br>
+   1. Prerequisites: Data file is in data folder
+   2. Test case: One field in a `Person` is in the wrong format. <br>
+       Example: <insert example>
+      Expected: The person will not appear in the contacts panel when TripScribe is launched. <br>The data file is updated such that itineraries previously associated with the contact will no longer store the contact's `Id` under its client or vendor lists<br>
       "Illegal value found in field of a contact entry, skipping." is logged into terminal.
-   3. Test case: 1 field in an `Itinerary` is in the wrong format. <br>
-      Expected: Itinerary should not be in TripScribe when app is launched. <br>
+   3. Test case: One field in an `Itinerary` is in the wrong format. <br>
+      Example: <insert example>
+      Expected: The itinerary  will not appear in the itinerary panel when TripScribe is launched. <br>
       "Illegal value found in field of an itinerary entry, skipping." is logged into terminal.
+  4. Test case: Multiple fields in a `Person` is in the wrong format. <br> 
+      Example: <insert example>
+      Expected: Similar to step 2.
+  5. Test case: Multiple fields in an `Itinerary` is in the wrong format. <br>
+      Example: <insert example>
+      Expected: Similar to step 3.
 
 ## **Appendix: Effort**
 
