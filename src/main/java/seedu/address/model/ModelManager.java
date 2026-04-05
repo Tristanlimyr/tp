@@ -101,12 +101,15 @@ public class ModelManager implements Model {
     @Override
     public void deletePerson(Person target) {
         addressBook.removePerson(target);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_CONTACTS);
+        updateFilteredItineraryList(PREDICATE_SHOW_ALL_ITINERARIES);
     }
 
     @Override
     public void addPerson(Person person) {
         addressBook.addPerson(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_CONTACTS);
+        updateFilteredItineraryList(PREDICATE_SHOW_ALL_ITINERARIES);
     }
 
     @Override
@@ -134,11 +137,14 @@ public class ModelManager implements Model {
     @Override
     public void deleteItinerary(Itinerary target) {
         addressBook.removeItinerary(target);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_CONTACTS);
+        updateFilteredItineraryList(PREDICATE_SHOW_ALL_ITINERARIES);
     }
 
     @Override
     public void addItinerary(Itinerary itinerary) {
         addressBook.addItinerary(itinerary);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_CONTACTS);
         updateFilteredItineraryList(PREDICATE_SHOW_ALL_ITINERARIES);
     }
 
