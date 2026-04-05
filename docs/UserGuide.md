@@ -63,7 +63,7 @@ TripScribe needs Java `17` or above to run. Here is how to check if you already 
   * Installation guide for Mac users [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
 #### 2. Download TripScribe
-* Download the latest `tripscribe.jar` from [here](https://github.com/AY2526S2-CS2103T-F12-1/tp/releases)
+* Download the latest `TripScribe.jar` file from [here](https://github.com/AY2526S2-CS2103T-F12-1/tp/releases)
 * Move the file to a folder of your choice. For example, a folder called `TripScribe` on your desktop.
 
 #### 3. Run TripScribe
@@ -122,9 +122,14 @@ You can refer to the [Features](#features) below to learn more details of each c
 
 * Additional parameters for commands that do not require them (such as `help`, `exit` and `clear`) will be ignored.
     * **Example:** `help 123` is interpreted as `help`.
-
-* If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines, as there may be formatting issues which affect the copied text.
 </box>
+
+<box type="warning" seamless>
+
+If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines, as there may be formatting issues which affect the copied text.
+
+</box>
+
 <div style="page-break-after: always;"></div>
 
 
@@ -225,7 +230,7 @@ list /FLAG
     | `client`    | Only clients                           |
     | `vendor`    | Only vendors                           |
     | `itinerary` | All itineraries                        |
-*   | `all`       | All contacts and itineraries           |
+    | `all`       | All contacts and itineraries           |
 
 
 * When you view contacts (`/contact`, `/client`, `/vendor`), TripScribe hides the itinerary panel.
@@ -371,7 +376,7 @@ delete /FLAG INDEX
 **Things to note:**
 * This will delete the contact or itinerary at the specified `INDEX`.
 * `FLAG` specifies the entry type you are deleting. It must be one of: `contact` , `itinerary`.
-* `INDEX` is the index number shown in the displayed person or itinerary list. It **must be a positive, non-zero number** 1, 2, 3, …​
+* `INDEX` is the index number shown in the displayed person or itinerary list. It **must be a positive, non-zero number** (e.g. 1, 2, 3, …​)
 * When deleting a contact, the contact will be also be removed from any itineraries it is part of.
 
 </box>
@@ -466,7 +471,7 @@ Furthermore, certain edits can cause TripScribe to remove entries (e.g., if a va
 
 
 **Q**: Can TripScribe handle multiple data files?<br>
-**A**: No, TriScribe can only use 1 data file while the application is running. One way you can use multiple data file would be to name the data files differently, and update the in the `addressBookFilePath` field in the `preferences.json` file before each time you start up the application.
+**A**: No, TripScribe can only use 1 data file while the application is running. One way you can use multiple data file would be to name the data files differently, and update the in the `addressBookFilePath` field in the `preferences.json` file before each time you start up the application.
 
 
 
