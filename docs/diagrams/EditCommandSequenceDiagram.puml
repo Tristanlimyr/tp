@@ -12,22 +12,33 @@ participant ":Model" as model MODEL_COLOR
 
 [-> parser : parse("FLAG INDEX FIELD")
 activate parser
-note right: FLAG is either `/contact` or `/itinerary`, which specifies the type \nof entry being edited (`Person` or `Itinerary' respectively).\n INDEX specifies the target entry being edited. \n FIELD specifies the fields being edited.
+note right: FLAG is either /contact or /itinerary, which specifies the type\nof entry being edited (Person or Itinerary respectively).\nINDEX specifies the target entry being edited.\nFIELD specifies the fields being edited.
 
 parser -> parser : tokenize by prefixes
-note right: Splits "INDEX FIELD" into\n index and field parameters
+note right: Splits "INDEX FIELD" into\nindex and field parameters
 
-parser -> descriptor ** : new EditXYZDescriptor()
-note right: `XYZ` is a placeholder for the type of entry \n being edited (either `Person` or 'Itinerary`)
+create descriptor
+parser -> descriptor : new EditXYZDescriptor()
+activate descriptor
+descriptor --> parser
+deactivate descriptor
+note right: XYZ is a placeholder for the type of entry\nbeing edited (either Person or Itinerary)
 
-parser -> parser : Parse and set values for \n edited fields in descriptor
+parser -> parser : parse and set values for\nedited fields in descriptor
 
 parser -> parser : isAnyFieldEdited()
 
-parser -> command ** : new EditXYZCommand(index, descriptor)
+create command
+parser -> command : new EditXYZCommand(index, descriptor)
+activate command
+command --> parser
+deactivate command
 
 [<-- parser : command
 deactivate parser
+
+parser -[hidden]-> parser
+destroy parser
 
 ...
 
@@ -40,7 +51,7 @@ model --> command
 deactivate model
 
 command -> command : createEditedXYZ()
-note right: Merges original fields\n with descriptor values
+note right: Merges original fields\nwith descriptor values
 
 alt duplicate entry
     [<-- command : throw CommandException

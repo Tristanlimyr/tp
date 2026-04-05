@@ -187,21 +187,18 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 This section describes some noteworthy details on how certain features are implemented.
 
 ### Edit command
+
 The `edit` command modifies contact and itinerary details. The implementation uses an abstract `EditCommand` class with specialized subclasses to handle the editing of `Person` and `Itinerary` objects respectively.
 
 #### Architecture
+
+`EditCommand` is abstract, with `EditPersonCommand` and `EditItineraryCommand` providing concrete implementations to edit a `Person` or `Itinerary` respectively.
+Each subclass contains a descriptor class, `EditPersonDescriptor` and `EditItineraryDescriptor` respectively, which are used to merge the unchanged fields with new edited fields.
+
 The class diagram below shows the overall structure of the `edit` command implementation:
 
 <puml src="diagrams/EditCommandClassDiagram.puml" width="600"/>
 
-`EditCommand` is abstract, with `EditPersonCommand` and `EditItineraryCommand` providing concrete implementations to edit a `Person` or `Itinerary` respectively. 
-Each subclass contains a descriptor class, `EditPersonDescriptor` and `EditItineraryDescriptor` respectively, which are used to merge the unchanged fields with new edited fields.
-
-#### Command Execution
-
-The sequence diagram below illustrates how an `edit` command is executed in general:
-
-<puml src="diagrams/EditCommandSequenceDiagram.puml" width="600"/>
 
 The `edit` command is executed in four main steps:
 1. **Parsing:** `EditCommandParser` parses user input to create the appropriate `EditXYZDescriptor` and `EditXYZCommand` subclass (where `XYZ` is a placeholder for the type of entry being edited, either `Person` or `Itinerary`).
@@ -210,7 +207,18 @@ The `edit` command is executed in four main steps:
 3. **Merging:** The descriptor created in step 1 combines the target entry's unchanged fields with the updated values.
 4. **Update:** `EditXYZCommand` creates an edited `XYZ` entry using the descriptor in step 3, and replaces the old entry in the list.
 
-#### Editing a person
+The sequence diagram below illustrates how an `edit` command is executed:
+
+<puml src="diagrams/EditCommandSequenceDiagram.puml" width="600"/>
+
+<box type="info" seamless>
+
+**Note:** The lifeline for `EditCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+
+</box>
+
+**Editing a person**
+
 The following class diagram shows the attributes and methods used in `EditCommand`, `EditPersonCommand` and `EditPersonDescriptor`.
 
 <puml src="diagrams/EditPersonClassDiagram.puml" width="600"/>
@@ -224,11 +232,22 @@ More on `EditPersonDescriptor`:
 * For each field, if the field was edited, the setter method is used to set the field to the updated value. Otherwise, the original value is retrieved by the getter method.
 * For example, if the person's name field was not edited, its old name is retrieved and used in the descriptor:<br>`Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());`
 
-#### Editing an itinerary
+**Editing an itinerary**
+
 Editing an itinerary follows the same pattern as [Editing a person](#editing-a-person) with these key differences:
 * **Additional fields:** `EditItineraryDescriptor` stores `startDate` and `endDate` in addition to the `Itinerary` attributes (`itineraryName`,`destination`, `dateRange`). This is to enable additional date validation.
 * **Date validation:** `createEditedItinerary()` checks that `startDate` is before `endDate`and throws a `CommandException` if invalid.
 
+#### Design considerations
+
+**Aspect: `EditCommand` class structure**
+* Alternative 1 (Current choice):Abstract `EditCommand` class with `EditPersonCommand` and `EditItineraryCommand` subclasses
+  * Pros: Better type safety and follows the Open-Closed Principle. 
+  * Cons: More classes to maintain.
+
+* Alternative 2: Single `EditCommand` class to handle both `Person` and `Itinerary` editing.
+  * Pros: Fewer classes.
+  * Cons: Less type-safety. long `EditCommand` class.
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
