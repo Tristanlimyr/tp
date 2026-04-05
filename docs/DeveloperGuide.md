@@ -172,7 +172,7 @@ Each `Id` in the list corresponds to a unique `Person` and cannot be repeated.
 
 An `Id` belonging to a person of the client `Role` cannot be in the client list, an `Id` belonging to a person of the vendor `Role` cannot be in the vendor list
 
-The class diagram for Itinerary is shown below:
+The class diagram for `Itinerary` is shown below:
 
 <puml src="diagrams/ItineraryClassDiagram.puml" alt="ItineraryClassDiagram" />
 
