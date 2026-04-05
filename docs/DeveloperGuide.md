@@ -35,7 +35,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** (consisting of classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
+**`Main`** (consisting of classes [`Main`](https://github.com/AY2526S2-CS2103T-F12-1/tp/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2526S2-CS2103T-F12-1/tp/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
 * At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
 * At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
@@ -57,7 +57,7 @@ The *Sequence Diagram* below shows how the components interact with each other f
 Each of the four main components (also shown in the diagram above),
 
 * defines its *API* in an `interface` with the same name as the Component.
-* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
+* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point).
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
@@ -67,13 +67,13 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2526S2-CS2103T-F12-1/tp/tree/master/src/main/java/seedu/address/ui/Ui.java)
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `ItineraryListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2526S2-CS2103T-F12-1/tp/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2526S2-CS2103T-F12-1/tp/tree/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -84,7 +84,7 @@ The `UI` component,
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2526S2-CS2103T-F12-1/tp/tree/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -95,17 +95,16 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 <puml src="diagrams/DeleteSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `delete 1` Command" />
 
 <box type="info" seamless>
-
 **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram.
 </box>
 
 How the `Logic` component works:
 
 1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
-1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeleteCommand`) which is executed by the `LogicManager`.
-1. The command can communicate with the `Model` when it is executed (e.g. to delete a person).<br>
+2. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeleteCommand`) which is executed by the `LogicManager`.
+3. The command can communicate with the `Model` when it is executed (e.g. to delete a person).<br>
    Note that although this is shown as a single step in the diagram above (for simplicity), in the code it can take several interactions (between the command object and the `Model`) to achieve.
-1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
+4. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
 
 Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing a user command:
 
@@ -116,15 +115,15 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2526S2-CS2103T-F12-1/tp/tree/master/src/main/java/seedu/address/model/Model.java)
 
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
 
 The `Model` component,
 
-* stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
-* stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object) and `Itinerary` objects (which are contained in a `UniqueItineraryList` object).
+* stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change. Similarly, for currently 'selected' `Itinerary` objects (e.g. when viewing a specific itinerary).
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
@@ -139,12 +138,12 @@ The `Model` component,
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2526S2-CS2103T-F12-1/tp/tree/master/src/main/java/seedu/address/storage/Storage.java)
 
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
 The `Storage` component,
-* can save both address book data and user preference data in JSON format, and read them back into corresponding objects.
+* can save both TripScribe data and user preference data in JSON format, and read them back into corresponding objects.
 * inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
@@ -218,6 +217,58 @@ The sequence diagram below shows the interactions within the logic component.
     * Pros: Only 1 panel shown on GUI, resulting in cleaner user experience.
     * Cons: Complex implementation required to get respective `Person`s from `Model` for each itinerary. Every `Model` update requires updating each `ItineraryListPanel` for each itinerary.
 
+### Adding itineraries
+#### Implementation
+The `addi` command allows users to add itineraries to the address book. An itinerary can have any number of clients and vendors which are `Person` objects. 
+This section aims to detail how the association between `Person` and `Itinerary` objects is handled in TripScribe.
+
+Every `Itinerary` object stores two lists of `Id`. One for `Id`s of clients and another for `Id`s of vendors involved in the itinerary. The following object diagram provides an illustration:
+<puml src="diagrams/AddiObjectDiagram.puml" />
+<br><br>
+
+Recall that `AddressBook` in `Model` component stores a `UniquePersonList` and a `UniqueItineraryList`. <br>
+When adding an `Itinerary` object into the `AddressBook` object, `AddressBook` will be responsible for ensuring the consistency of address book data.
+That is, `AddressBook` will check if the `Id`s referenced by the itinerary belong to `Person` objects that already exist in the `UniquePersonList`. If not, the `AddressBook` will reject the itinerary and throw a `PersonNotFoundException`. In other words,
+`AddressBook` will ensure that an itinerary can only be added if all the `Person` objects it references already exist in the address book. The following sequence diagram illustrates the interactions when adding an itinerary:
+
+<div class="row">
+  <div class="col-md-6">
+
+<h6 align="center">Success</h4>
+
+<puml src="diagrams/AddiSequenceDiagramSuccess.puml" />
+
+  </div>
+  <div class="col-md-6">
+
+<h6 align="center">Failure</h4>
+
+<puml src="diagrams/AddiSequenceDiagramFail.puml" />
+
+  </div>
+</div>
+
+Since every `Person` has a unique `Id`, we have an unambiguous way to associate an itinerary with its clients and vendors without needing direct references to the objects. This decoupled design significantly simplifies the process of saving and reading TripScribe data. 
+
+
+When saving data, the `Storage` component can simply serialize the fields of the `Person` and `Itinerary` objects exactly as they are.
+Their associations are already captured through the stored `Id` strings.
+
+
+When reading the JSON file to construct the corresponding objects, we have the following two-step process:
+1. Read and construct all `Person` objects, adding them to the `AddressBook`.
+2. Read and construct all `Itinerary` objects, adding them to the `AddressBook`. When adding an `Itinerary`, the `AddressBook` will already contain all the necessary `Person` objects, allowing it to enforce data consistency as described above.
+
+#### Design considerations
+**Aspect: Managing the association between contacts and itineraries**
+* **Alternative 1 (current choice):** `Itinerary` stores the `Id`s of `Person`s.
+    * Pros: Reading and saving data to JSON file is simple to implement with minimal data duplication.
+    * Pros: Reduces coupling between `Itinerary` and `Person` classes.
+    * Cons: Introduce slight overheads. When retrieving the clients and vendors of an itinerary, we need to resolve the `Id`s back to the `Person` objects.
+* **Alternative 2:** `Itinerary` stores direct references to `Person`s.
+    * Pros: The `addi` command would be simpler to implement.
+    * Cons: Reading and saving data becomes more complex.
+
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -239,9 +290,9 @@ The sequence diagram below shows the interactions within the logic component.
 
 Operations executives in small to mid-size tour agencies who
 
-* need to manage a significant client bookings and itineraries
+* need to manage a significant number of client bookings and itineraries
 * handle frequent updates to itineraries, client details and vendor booking notes
-* coordinate between multiple groups (e.g. transport, tour guides, tourists, vendor)
+* coordinate between multiple groups (e.g. transport, tour guides, tourists, vendors)
 * prefer desktop apps over other types
 * can type fast
 * prefers using CLI interfaces over mouse-based interfaces
@@ -250,34 +301,31 @@ Operations executives in small to mid-size tour agencies who
 
 Existing tools are too heavy or fragmented. Our app is a lightweight, single‑user solution for tour agency executives, enabling rapid typed commands to manage client contacts, addresses, itineraries, and vendor details. Data is stored locally in editable text files.
 
-
-
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                   | I want to …​                                                                         | So that I can…​                                         |
-|---------|-------------------------------------------|--------------------------------------------------------------------------------------|---------------------------------------------------------|
-| `* * *` | tour agency operation executive           | add a new contact with name, phone number, email, address, and tags                  | record details of clients, vendors, tour guides, etc    |
-| `* * *` | tour agency operation executive           | add a new itinerary with destination and associated clients, tour guides and vendors | record and view itinerary details at a glance           |
-| `* * *` | tour agency operation executive           | list all itineraries                                                                 | check that all details are in order                     |
-| `* * *` | tour agency operation executive           | list all contacts which includes clients, vendors and tour guides                    | plan itineraries with the relevant information          |
-| `* * *` | tour agency operation executive           | delete a contact or itinerary                                                        | remove data that I no longer need                       |
-| `* * *` | tour agency operation executive           | work offline without internet                                                        | manage trips even in areas with poor connectivity       |
-| `* * *` | forgetful tour agency operation executive | view documentation through a help function                                           | find out how to use the app and what I can do with it   |
-| `* *`   | tour agency operation executive           | sort itineraries by date                                                             | prioritize itineraries according to how urgent they are |
-| `* *`   | tour agency operation executive           | sort contact in alphabetical order                                                   | find a contact easily                                   |
-| `* *`   | tour agency operation executive           | undo and redo commands                                                               | recover from mistakes                                   |
-| `* *`   | tour agency operation executive           | archive completed itineraries                                                        | keep my workplace uncluttered                           |
-| `* *`   | tour agency operation executive           | add pictures to contacts                                                             | recognize the people I work with                        |
-| `* *`   | tour agency operation executive           | update contact information                                                           | make sure my contact information is accurate            |
-| `* *`   | tour agency operation executive           | filter contacts by tags                                                              | search or view contacts associated to a tag             |
-
-
+| Priority | As a …​                                   | I want to …​                                                                      | So that I can…​                                         |
+|----------|-------------------------------------------|-----------------------------------------------------------------------------------|---------------------------------------------------------|
+| `* * *`  | tour agency operation executive           | add a new contact with name, role, phone number, email, address, and tags         | record details of clients, vendors, tour guides, etc    |
+| `* * *`  | tour agency operation executive           | add a new itinerary with destination, duration and associated clients and vendors | record and view itinerary details at a glance           |
+| `* * *`  | tour agency operation executive           | list all itineraries                                                              | check that all details are in order                     |
+| `* * *`  | tour agency operation executive           | list all contacts which includes client and vendors                               | plan itineraries with the relevant information          |
+| `* * *`  | tour agency operation executive           | delete a contact or itinerary                                                     | remove data that I no longer need                       |
+| `* * *`  | tour agency operation executive           | work offline without internet                                                     | manage trips even in areas with poor connectivity       |
+| `* * *`  | forgetful tour agency operation executive | view documentation through a help function                                        | find out how to use the app and what I can do with it   |
+| `* *`    | tour agency operation executive           | update contact information                                                        | make sure my contact information is accurate            |
+| `* *`    | tour agency operation executive           | update itinerary details                                                          | keep trip information accurate when plans change        |
+| `* *`    | tour agency operation executive           | filter contacts by tags                                                           | search or view contacts associated to a tag             |
+| `* *`    | tour agency operation executive           | sort itineraries by date                                                          | prioritize itineraries according to how urgent they are |
+| `* *`    | tour agency operation executive           | sort contact in alphabetical order                                                | find a contact easily                                   |
+| `* *`    | tour agency operation executive           | undo and redo commands                                                            | recover from mistakes                                   |
+| `* *`    | tour agency operation executive           | archive completed itineraries                                                     | keep my workplace uncluttered                           |
+| `* *`    | tour agency operation executive           | add pictures to contacts                                                          | recognize the people I work with                        |
 
 ### Use cases
 
-(For all use cases below, the **System** is the `TripScribe` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, `TripScribe` is the **System** and `User` is the **Actor**, unless specified otherwise)
 
 **UC01: Add a contact**
 
@@ -297,13 +345,11 @@ Use case ends.
 
 * 1b. TripScribe detects invalid values in the entered contact details (e.g., invalid email/phone, empty name).
 
-    * 1b1. TripScribe shows a validation error message and displays the
-      correct command usage (and/or which field is invalid).
+    * 1b1. TripScribe shows a validation error message and displays the correct command usage (and/or which field is invalid).
 
       Use case ends.
 * 1c. TripScribe detects a duplicate contact.
-    * 1c1. TripScribe shows a duplicate message and does not create the
-      contact.
+    * 1c1. TripScribe shows a duplicate message and does not create the contact.
     
       Use case ends.
 ---
@@ -319,8 +365,7 @@ Use case ends.
 **Extensions**
 
 * 1a. TripScribe detects an error in the entered command format.
-    * 1a1. TripScribe displays a format error message with the
-      correct command usage.
+    * 1a1. TripScribe displays a format error message with the correct command usage.
 
       Use case ends.
 
@@ -329,8 +374,7 @@ Use case ends.
 
       Use case ends.
 * 1c. TripScribe cannot find the referenced client or vendor(e.g., provided client id/vendor id does not exist).
-    * 1c1. TripScribe displays an error message indicating the contact is
-      not found and does not create the itinerary.
+    * 1c1. TripScribe displays an error message indicating the contact is not found and does not create the itinerary.
     
       Use case ends.
 * 1d. TripScribe detects a duplicate itinerary.
@@ -343,7 +387,7 @@ Use case ends.
 
 **MSS**
 
-1. User requests to view a list of entries by specifying a category (e.g., contact / itinerary / vendor / client).
+1. User requests to view a list of entries by specifying a category (e.g., all / contact / itinerary / vendor / client).
 2. TripScribe retrieves the matching entries.
 3. TripScribe displays the list of entries.
 
@@ -352,11 +396,10 @@ Use case ends.
 **Extensions**
 
 * 1a. TripScribe detects an error in the entered command format (e.g., Typo).
-    * 1a1. TripScribe displays a format error message with the
-      correct command usage.
+    * 1a1. TripScribe displays a format error message with the correct command usage.
 
       Use case ends.
-* 1b. TripScribe detects an error in the entered command details (e.g., missing category / unrecognised category).
+* 1b. TripScribe detects an error in the entered command details (e.g., missing category / unrecognized category).
     * 1b1. TripScribe displays a format error message with the correct command usage and list of supported categories.
 
       Use case ends.
@@ -369,28 +412,23 @@ Use case ends.
 **UC04: Delete**
 
 **MSS**
-1. User requests to delete a contact or itinerary by specifying the entry
-   identifier.
-2. TripScribe deletes the entry and displays a success message and the
-   updated list.
+1. User requests to delete a contact or itinerary by specifying the entry identifier.
+2. TripScribe deletes the entry and displays a success message and the updated list.
 
 Use case ends.
 
 **Extensions**
 
 * 1a. TripScribe detects an error in the entered command format.
-    * 1a1. TripScribe displays a format error message with the
-      correct command usage.
+    * 1a1. TripScribe displays a format error message with the correct command usage.
     
       Use case ends.
 * 1b. TripScribe detects an invalid identifier (e.g., not a number / out of range / not found).
-    * 1b1. TripScribe shows an error message indicating the target does
-      not exist and does not delete anything.
+    * 1b1. TripScribe shows an error message indicating the target does not exist and does not delete anything.
   
       Use case ends.
 * 1c. TripScribe detects that the specified entry is referenced by itineraries.
-    * 1c1. TripScribe shows an error message describing the dependency
-      and aborts deletion.
+    * 1c1. TripScribe shows an error message describing the dependency and aborts deletion.
     
       Use case ends.
 
@@ -402,18 +440,17 @@ Use case ends.
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4. The system should function without an Internet connection, allowing users to access and run the application offline.
 
-*{More to be added}*
-
 ### Glossary
 
 * **Case-Insensitive Text**: Text where uppercase and lowercase letters are treated as equivalent.
-* **Client**: A person who participates in a tour organised by the agency.
+* **Client**: A person who participates in a tour organized by the agency.
 * **Command Line Interface (CLI) Application**: An application that users interact with by typing commands.
-* **Flag**: An option used with a command to specify or modify its behaviour.
+* **Flag**: An option used with a command to specify or modify its behavior.
 * **Graphical User Interface (GUI) Application**: An application that users interact with through graphical elements such as buttons, icons, and menus using a mouse or keyboard.
+* **Index**: The one-based position number of an entry as shown in the currently displayed list. For example, the first entry shown has index `1`. The index changes depending on the current list view.
 * **Itinerary**: A plan for a tour that includes the tour name, start and end dates, the clients participating in the tour, and the vendors involved.
-* **Mainstream OS**: Windows, Linux, Unix and macOS
-* **Tag**: A label used to categorise any number of entries together.
+* **Mainstream OS**: Windows, Linux, Unix and macOS.
+* **Tag**: A label used to categorize any number of entries together.
 * **Universally Unique Identifier (UUID)**: A unique 36-character value used to distinguish contacts in TripScribe. In particular, it consists of numbers (0 - 9) and letters (a - f) separated by hyphens. (e.g.123e4567-e89b-12d3-a456-426614174000).
 * **Vendor**: A party that provides goods or services for a tour.
 
@@ -457,19 +494,15 @@ testers are expected to do more *exploratory* testing.
 ### Deleting a person
 
 1. Deleting a person while all persons are being shown
-
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
-
-   1. Test case: `delete 1`<br>
+   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list. 
+   2. Test case: `delete 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
-
-   1. Test case: `delete 0`<br>
+   3. Test case: `delete 0`<br>
       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
-
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+   4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
+2. _{ more test cases …​ }_
 
 ### Saving data
 

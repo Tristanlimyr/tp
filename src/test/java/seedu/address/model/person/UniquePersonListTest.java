@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.itinerary.UniqueItineraryList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.testutil.PersonBuilder;
@@ -56,6 +57,15 @@ public class UniquePersonListTest {
     public void add_duplicatePerson_throwsDuplicatePersonException() {
         uniquePersonList.add(ALICE);
         assertThrows(DuplicatePersonException.class, () -> uniquePersonList.add(ALICE));
+    }
+
+    @Test
+    public void add_personWithSameNameIgnoringCase_throwsDuplicatePersonException() {
+        uniquePersonList.add(BOB);
+        Person duplicateBob = new PersonBuilder(BOB)
+                .withName("bob choo")
+                .build();
+        assertThrows(DuplicatePersonException.class, () -> uniquePersonList.add(duplicateBob));
     }
 
     @Test
@@ -171,5 +181,31 @@ public class UniquePersonListTest {
     @Test
     public void toStringMethod() {
         assertEquals(uniquePersonList.asUnmodifiableObservableList().toString(), uniquePersonList.toString());
+    }
+
+    @Test
+    public void equals() {
+        uniquePersonList.add(ALICE);
+
+        // same values -> returns true
+        UniquePersonList uniquePersonListCopy = new UniquePersonList();
+        uniquePersonListCopy.add(ALICE);
+        assertTrue(uniquePersonList.equals(uniquePersonListCopy));
+
+        // same object -> returns true
+        assertTrue(uniquePersonList.equals(uniquePersonList));
+
+        // null -> returns false
+        assertFalse(uniquePersonList.equals(null));
+
+        // empty UniquePersonList and empty UniqueItineraryList -> returns false
+        assertFalse(new UniquePersonList().equals(new UniqueItineraryList()));
+
+        assertFalse(uniquePersonList.equals(new UniqueItineraryList()));
+
+        // different values -> returns false
+        UniquePersonList uniquePersonListDifferent = new UniquePersonList();
+        uniquePersonListDifferent.add(BOB);
+        assertFalse(uniquePersonList.equals(uniquePersonListDifferent));
     }
 }
