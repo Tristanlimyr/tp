@@ -496,6 +496,22 @@ Furthermore, certain edits can cause TripScribe to remove entries (e.g., if a va
 
 
 
+<div style="page-break-after: always;"></div>
+
+## Glossary
+
+* **Alphanumeric characters**: Characters consisting of letters (A–Z, a–z) and numbers (0–9).
+* **Case-Insensitive Text**: Text where uppercase and lowercase letters are treated as equivalent.
+* **Command Line Interface (CLI) Application**: An application that users interact with by typing commands.
+* **Domain-label**: A part of a domain name separated by dots, consisting of alphanumeric characters and hyphens, but not beginning or ending with a hyphen.
+* **Flag**: An option used with a command to specify or modify its behavior.
+* **Graphical User Interface (GUI) Application**: An application that users interact with through graphical elements such as buttons, icons, and menus using a mouse or keyboard.
+* **Index**: The position number of an entry as shown in the currently displayed list. For example, the first entry shown has index `1`. The index changes depending on the current list view. Indexes start from `1`.
+* **Mainstream OS**: Operating systems such as Windows, Linux, Unix and macOS.
+* **Tag**: A label used to categorize any number of entries together.
+
+<div style="page-break-after: always;"></div>
+
 ## Known Issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. 
