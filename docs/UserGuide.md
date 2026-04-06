@@ -77,7 +77,9 @@ TripScribe needs Java `17` or above to run. Here is how to check if you already 
     * **Windows:** `cd C:\Users\YourName\Desktop\TripScribe`
 * Run TripScribe by typing the command `java -jar tripscribe.jar` into the terminal.<br>
  A pop-up window similar to the below should appear in a few seconds. On first start, the app will load sample data so you can explore its features right away.<br>
- ![Ui](images/Ui.png)
+
+<img src="images/Ui.png" alt="drawing" width="600"/>
+
 <div style="page-break-after: always;"></div>
 
 
@@ -471,7 +473,7 @@ Furthermore, certain edits can cause TripScribe to remove entries (e.g., if a va
 
 
 **Q**: Can TripScribe handle multiple data files?<br>
-**A**: No, TripScribe can only use 1 data file while the application is running. One way you can use multiple data file would be to name the data files differently, and update the in the `addressBookFilePath` field in the `preferences.json` file before each time you start up the application.
+**A**: No, TripScribe can only use 1 data file while the application is running. One way you can use multiple data file would be to name the data files differently, and update the `addressBookFilePath` field in the `preferences.json` file before each time you start up the application.
 
 
 
