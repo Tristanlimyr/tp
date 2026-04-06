@@ -63,7 +63,7 @@ TripScribe needs Java `17` or above to run. Here is how to check if you already 
   * Installation guide for Mac users [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
 #### 2. Download TripScribe
-* Download the latest `TripScribe.jar` file from [here](https://github.com/AY2526S2-CS2103T-F12-1/tp/releases)
+* Download the latest `TripScribe.jar` file from [here](https://github.com/AY2526S2-CS2103T-F12-1/tp/releases). Look for the release with the `Latest` tag. You can ignore the other files.
 * Move the file to a folder of your choice. For example, a folder called `TripScribe` on your desktop.
 
 #### 3. Run TripScribe
