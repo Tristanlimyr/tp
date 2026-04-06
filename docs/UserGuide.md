@@ -498,13 +498,19 @@ Furthermore, certain edits can cause TripScribe to remove entries (e.g., if a va
 
 ### Adding Itineraries
 
+**Issue**: Cannot add itinerary into TripScribe.
+- Scenario 1: Start date is **after** end date (i.e. `from/2026-01-05 to/2026-01-01`).
+  - Fix: Make sure the start date you enter is before or on the same day as the end date.
+- Scenario 2: Index entered is of the wrong role (i.e. `c/3`, but the contact in view at index 3 is a `vendor`).
+  - Fix: Make sure you put the correct role prefix (either `c/` or `v/` for each contact).
+
 ### Editing Contacts
 
 ### Editing Itineraries
 
 ### Find command
 **Issue**: Find command cannot be entered into command box, does not work.
-- Scenario 1: No keywords entered for command
+- Scenario 1: No keywords entered for command.
   - Fix: Enter at least one keyword to search
 - Scenario 2: Mixing of general search and multi-field search formats (i.e. `find Ryan p/(+65)`)
   - Fix 1: Use general search format only. `find ryan (+65)`
