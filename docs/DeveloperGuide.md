@@ -788,3 +788,5 @@ These test cases follow the same steps as manual testing for [Deleting a person]
 ## **Appendix: Planned Enhancements**
 
 Team size: 4
+
+1. Adding contacts to existing itineraries using the `edit` command.
