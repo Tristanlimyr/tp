@@ -497,9 +497,9 @@ Furthermore, certain edits can cause TripScribe to remove entries (e.g., if a va
 ### Adding Contacts
 **Issue**: Cannot add a contact into TripScribe.
 - Scenario 1: The email you entered is in the wrong format (i.e. `gmail: alexyeoh`).
-    - Fix: Make sure the entered email is of the following format:
-- Scenario 2: Index entered is of the wrong role (i.e. `c/3`, but the contact in view at index 3 is a `vendor`).
-    - Fix: Make sure you put the correct role prefix (either `c/` or `v/`) for each contact.
+    - Fix: Make sure the entered email is of the following format: `local-part@domain`<br>
+      `local-part`: A part of an email consisting of only alphanumeric characters and the following symbols: `+`,`_`, `.`, `-`, It cannot start or end with special characters. (i.e. `alex_yeoh`)<br>
+      `domain`: A part of an email consisting of [domain labels](#glossary) separated by dots `.`. Only alphanumeric characters and hyphens are allowed, and cannot start or end with a hyphen. (i.e. `example.domain.com`)
 
 ### Adding Itineraries
 
@@ -538,6 +538,7 @@ Furthermore, certain edits can cause TripScribe to remove entries (e.g., if a va
 * **Flag**: An option used with a command to specify or modify its behavior.
 * **Graphical User Interface (GUI) Application**: An application that users interact with through graphical elements such as buttons, icons, and menus using a mouse or keyboard.
 * **Index**: The position number of an entry as shown in the currently displayed list. For example, the first entry shown has index `1`. The index changes depending on the current list view. Indexes start from `1`.
+* **Local-part**: A part of an email consisting of only alphanumeric characters and the following symbols: `+`,`_`, `.`, `-`, It cannot start or end with special characters.
 * **Mainstream OS**: Operating systems such as Windows, Linux, Unix and macOS.
 * **Tag**: A label used to categorize any number of entries together.
 
