@@ -38,10 +38,10 @@
     - [Launch and Shutdown](#launch-and-shutdown)
     - [Deleting a Person](#deleting-a-person)
     - [Deleting an Itinerary](#deleting-an-itinerary)
+    - [Saving Data](#saving-data)
 - [Appendix: Effort](#appendix-effort)
-    - [Launch and Shutdown](#launch-and-shutdown)
-    - [Deleting a Person](#deleting-a-person)
-    - [Deleting an Itinerary](#deleting-an-itinerary)
+    - [Difficulty and Challenges](#difficulty-and-challenges)
+    - [Effort and Achievements](#effort-and-achievements)
 - [Appendix: Planned Enhancements](#appendix-planned-enhancements)
 --------------------------------------------------------------------------------------------------------------------
 
@@ -151,7 +151,7 @@ How the parsing works:
 ### Model Component
 **API** : [`Model.java`](https://github.com/AY2526S2-CS2103T-F12-1/tp/tree/master/src/main/java/seedu/address/model/Model.java)
 
-<puml src="diagrams/ModelClassDiagram.puml" width="450" />
+<puml src="diagrams/ModelClassDiagram.puml" width="600" />
 
 
 The `Model` component,
@@ -219,7 +219,7 @@ The class diagram for `Itinerary` is shown below:
 
 ### Adding Itineraries
 #### Implementation
-The `addi` command allows users to add itineraries to the address book. An itinerary can have any number of clients and vendors which are `Person` objects. 
+The `addi` command allows users to add itineraries to the address book. An itinerary can have any number of clients and vendors which are `Person` objects.
 This section aims to detail how the association between `Person` and `Itinerary` objects is handled in TripScribe.
 
 Every `Itinerary` object stores two lists of `Id`. One for `Id`s of clients and another for `Id`s of vendors involved in the itinerary. The following object diagram provides an illustration:
@@ -248,7 +248,7 @@ That is, `AddressBook` will check if the `Id`s referenced by the itinerary belon
   </div>
 </div>
 
-Since every `Person` has a unique `Id`, we have an unambiguous way to associate an itinerary with its clients and vendors without needing direct references to the objects. This decoupled design significantly simplifies the process of saving and reading TripScribe data. 
+Since every `Person` has a unique `Id`, we have an unambiguous way to associate an itinerary with its clients and vendors without needing direct references to the objects. This decoupled design significantly simplifies the process of saving and reading TripScribe data.
 
 
 When saving data, the `Storage` component can simply serialize the fields of the `Person` and `Itinerary` objects exactly as they are.
@@ -454,11 +454,11 @@ For example, alex will match Alex, and lex will also match Alex.
 * **Alternative 1 (current choice):** Support both a general search format and a multi-field search format.
   * Pros: More flexible for users. General search is fast for broad lookup, while multi-field search gives users more control.
   * Cons: Parser logic is more complex, since it must distinguish between the two formats and reject mixed usage.
-  
+
 * **Alternative 2:** Support only general search.
   * Pros: Simpler parser and predicate logic.
   * Cons: Users cannot restrict the search to specific fields, may return too much matching contacts.
-  
+
 * **Alternative 3:** Support only multi-field search.
   * Pros: Clearer and more structured command format.
   * Cons: Less convenient for users who want to perform a quick broad search.
@@ -471,7 +471,7 @@ For example, alex will match Alex, and lex will also match Alex.
 
 * **Alternative 2:** Match only full words or exact field values.
   * Pros: More precise results.
-  * Less flexible and less convenient for users.
+  * Cons: Less flexible and less convenient for users.
 
 **Aspect: How multi-field search combines conditions**
 
@@ -557,7 +557,7 @@ Use case ends.
 
 * 1a. TripScribe detects an error in the entered command format.
     * 1a1. TripScribe shows a format error message and displays the correct command usage.
-      
+
       Use case ends.
 
 * 1b. TripScribe detects invalid values in the entered contact details (e.g., invalid email/phone, empty name).
@@ -567,7 +567,7 @@ Use case ends.
       Use case ends.
 * 1c. TripScribe detects a duplicate contact.
     * 1c1. TripScribe shows a duplicate message and does not create the contact.
-    
+
       Use case ends.
 ---
 **UC02: Add an itinerary**
@@ -613,7 +613,7 @@ Use case ends.
       Use case ends.
 * 2a. TripScribe finds zero entries matching.
     * 2a1. TripScribe displays an empty result message.
-  
+
       Use case ends.
 
 ---
@@ -631,7 +631,7 @@ Use case ends.
 
 * 1a. TripScribe detects an error in the entered command format.
     * 1a1. TripScribe displays a format error message with the correct command usage.
-    
+
       Use case ends.
 
 * 1b. TripScribe detects an invalid index (e.g., not a positive integer or out of range).
@@ -699,7 +699,7 @@ testers are expected to do more *exploratory* testing.
 3. Exiting TripScribe using `exit`
    1. Type `exit` into the command bar of TripScribe <br>
       Expected: TripScribe application window is closed
-   
+
 4. Exiting TripScribe using the exit button
    1. Click `File` in TripScribe and click the `Exit` button <br>
       Expected: TripScribe application window is closed
@@ -707,10 +707,10 @@ testers are expected to do more *exploratory* testing.
 ### Deleting a Person
 
 1. Deleting a person while all persons are being shown
-   1. Prerequisites: List all persons using the `list /all` command. Ensure there are multiple persons in the list. 
+   1. Prerequisites: List all persons using the `list /all` command. Ensure there are multiple persons in the list.
    2. Test case: `delete /contact 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
-   
+
    Other incorrect delete commands to try:
     1. Test case: `delete` (missing flag and index)<br>
        Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
@@ -725,8 +725,8 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: Ensure a person is associated with an itinerary (e.g. person 1 linked to itinerary 2). Ensure the person is displayed in the person list (e.g. Using the `list /all` command).
    2. Test case: `delete /contact x` (where x is the person's index in the displayed list)<br>
       Expected: Contact is deleted.
-   
-   Follow-up: 
+
+   Follow-up:
    1. Ensure the itinerary is displayed in the itinerary list (e.g. Using the `list /all` command).
    2. Test case: `show y` (where y is the associated itinerary's index in the displayed list)<br>
       Expected: Deleted contact no longer appears in the itinerary’s associated contact list.
@@ -753,7 +753,7 @@ These test cases follow the same steps as manual testing for [Deleting a person]
 1. Dealing with missing data file
 
    1. Prerequisites: Data file is not in the `data` folder
-   2. Test case: TripScribe.json is missing from `data` folder on launch. <br> 
+   2. Test case: TripScribe.json is missing from `data` folder on launch. <br>
    Expected: TripScribe should still launch and function like normal, but with default set of data in view.
 
 2. Dealing with incorrect fields in data file
@@ -766,7 +766,7 @@ These test cases follow the same steps as manual testing for [Deleting a person]
       Example: `"startDate : "09-12-2026"`
       Expected: The itinerary  will not appear in the itinerary panel when TripScribe is launched. <br>
       "Illegal value found in field of an itinerary entry, skipping." is logged into terminal.
-   4. Test case 3: Multiple fields in a `Person` is in the wrong format. <br> 
+   4. Test case 3: Multiple fields in a `Person` is in the wrong format. <br>
        Example: `"role" : ""` ,`"phone" : "98765432"`
        Expected: Similar to test case 1.
    5. Test case 4: Multiple fields in an `Itinerary` is in the wrong format. <br>
@@ -788,3 +788,5 @@ These test cases follow the same steps as manual testing for [Deleting a person]
 ## **Appendix: Planned Enhancements**
 
 Team size: 4
+
+1. Adding contacts to existing itineraries using the `edit` command.
