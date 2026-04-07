@@ -498,8 +498,8 @@ Furthermore, certain edits can cause TripScribe to remove entries (e.g., if a va
 **Issue**: Cannot add a contact into TripScribe.
 - Scenario: The email you entered is in the wrong format (i.e. `gmail: alexyeoh`).
     - Fix: Make sure the entered email is of the following format: `local-part@domain`<br>
-      `local-part`: A part of an email consisting of only alphanumeric characters and the following symbols: `+`,`_`, `.`, `-`, It cannot start or end with special characters. (i.e. `alex_yeoh`)<br>
-      `domain`: A part of an email consisting of [domain labels](#glossary) separated by dots `.`. Only alphanumeric characters and hyphens are allowed, and cannot start or end with a hyphen. (i.e. `example.domain.com`)
+      `local-part`: A part of an email consisting of only alphanumeric characters and the following symbols: `+`,`_`, `.`, `-`, It cannot start or end with special characters. (i.e. `alex_yeoh`) <br>
+      `domain`: A part of an email consisting of [domain labels](#glossary) separated by dots `.`. Only alphanumeric characters and hyphens are allowed, and it cannot start or end with a hyphen. The final domain label must be at least 2 characters long. (i.e. `example.domain.com`)
 
 ### Adding Itineraries
 
