@@ -30,7 +30,7 @@
 * [User Guide]({{ baseUrl }}/UserGuide.html) :expanded:
   * [Quick Start]({{ baseUrl }}/UserGuide.html#quick-start)
   * [Features]({{ baseUrl }}/UserGuide.html#features)
-  * [Data Management]({{ baseUrl }}/UserGuide.html#data-management))
+  * [Data Management]({{ baseUrl }}/UserGuide.html#data-management)
   * [FAQ]({{ baseUrl }}/UserGuide.html#faq)
   * [Troubleshooting]({{ baseUrl }}/UserGuide.html#troubleshooting)
   * [Glossary]({{ baseUrl }}/UserGuide.html#glossary)
