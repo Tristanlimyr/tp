@@ -83,7 +83,8 @@ public class Itinerary {
     }
 
     /**
-     * Returns true if both itineraries have the same name.
+     * Returns true if both itineraries have the same name, destination and date range.
+     * This defines a weaker notion of equality between two itineraries.
      */
     public boolean isSameItinerary(Itinerary otherItinerary) {
         if (otherItinerary == this) {
@@ -91,7 +92,9 @@ public class Itinerary {
         }
 
         return otherItinerary != null
-                && otherItinerary.getName().equals(getName());
+                && otherItinerary.getName().equals(getName())
+                && otherItinerary.getDestination().equals(getDestination())
+                && otherItinerary.getDateRange().equals(getDateRange());
     }
 
     /**

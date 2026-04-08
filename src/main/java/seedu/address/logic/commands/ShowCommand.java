@@ -13,7 +13,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.id.Id;
 import seedu.address.model.itinerary.Itinerary;
-import seedu.address.model.itinerary.ItineraryNameMatchesPredicate;
+import seedu.address.model.itinerary.ItineraryMatchesPredicate;
 import seedu.address.model.person.IdMatchesPredicate;
 
 /**
@@ -51,8 +51,8 @@ public class ShowCommand extends Command {
 
         Itinerary itineraryToShow = lastShownList.get(index.getZeroBased());
 
-        ItineraryNameMatchesPredicate itineraryNameMatchesPredicate = new ItineraryNameMatchesPredicate(
-                List.of(itineraryToShow.getName()));
+        ItineraryMatchesPredicate itineraryNameMatchesPredicate = new ItineraryMatchesPredicate(
+                List.of(itineraryToShow));
         model.updateFilteredItineraryList(itineraryNameMatchesPredicate);
 
         List<Id> ids = Stream.concat(

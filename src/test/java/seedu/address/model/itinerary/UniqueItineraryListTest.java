@@ -13,9 +13,11 @@ import static seedu.address.testutil.TypicalItineraries.FRANCE_TRIP;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.id.Id;
 import seedu.address.model.itinerary.exceptions.DuplicateItineraryException;
 import seedu.address.model.itinerary.exceptions.ItineraryNotFoundException;
 import seedu.address.model.person.UniquePersonList;
@@ -45,8 +47,7 @@ public class UniqueItineraryListTest {
     public void contains_itineraryWithSameIdentityFieldsInList_returnsTrue() {
         uniqueItineraryList.add(FRANCE_TRIP);
         Itinerary editedItinerary = new ItineraryBuilder(FRANCE_TRIP)
-                .withDestination(VALID_ITINERARY_DEST_BALI)
-                .withDateRange(VALID_ITINERARY_START_DATE_BALI, VALID_ITINERARY_END_DATE_BALI)
+                .withClientIds(Set.of(new Id()))
                 .build();
         assertTrue(uniqueItineraryList.contains(editedItinerary));
     }
