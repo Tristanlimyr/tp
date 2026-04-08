@@ -100,16 +100,17 @@ TripScribe needs Java `17` or above to run. Here is how to check if you already 
 3. Run TripScribe by typing the command `java -jar TripScribe.jar` into the terminal.<br>
 A pop-up window similar to the below should appear in a few seconds. <br>
 
-   | ![TripScribe Window](images/Ui.png)<br>TripScribe Window |
-   |:--------------------------------------------------------:|
+   
+| <img src="images/TripScribeWindow.png" alt="TripScribe Window" width="500"/><br>TripScribe Window |
+|:-------------------------------------------------------------------------------------------------:|
 
 <div style="page-break-after: always;"></div> <br>
 
 #### Understanding TripScribe's Interface
 Before you get started, here is a quick guide on navigating TripScribe's interface. After opening TripScribe, you will see a window like this:
 
-| ![TripScribe Interface](images/Ui.png)<br>TripScribe Interface |
-|:--------------------------------------------------------------:|
+| <img src="images/TripScribeInterface.png" alt="TripScribe Interface" width="500"/> <br>TripScribe Interface |
+|:-----------------------------------------------------------------------------------------------------------:|
 
 Here are the key elements of this interface:
 1. **Menu Bar**: Click on `File` to access the `Exit` button and click on `Help` to access our help window.
@@ -193,8 +194,8 @@ Use this when you need a quick reference of command formats, or want to access t
 help
 ```
 
-| ![Help Window](images/helpMessage.png)<br>Help Window |
-|:-----------------------------------------------------:|
+| <img src="images/HelpWindow.png" alt="Help Window" width="500"/><br>Help Window |
+|:-------------------------------------------------------------------------------:|
 
 <div style="page-break-after: always;"></div>
 
@@ -562,8 +563,6 @@ You can also exit TripScribe by clicking **`File`**, followed by **`Exit`**, in 
 
 ## Data Management
 
-TripScribe automatically manages your data, but understanding how it works helps you use the application safely and effectively.
-
 ### Saving Your Data
 
 TripScribe automatically saves your data in the hard disk after any command that changes the data. You **do not** need to save data manually.
@@ -576,14 +575,6 @@ It is recommended that you back up your data regularly, especially if you plan t
 1. Close TripScribe.
 2. Navigate to the folder containing `TripScribe.jar`.
 3. Copy the entire `data` folder to a safe location (e.g., an external drive, cloud storage, etc.). 
-
-<box type="tip" seamless>
-
-**Tip:**
-Rename your back-up folder with a consistent naming convention (e.g., `data_backup_current_date`), so that you can easily tell which back-up is the most updated.
-
-</box>
-
 
 **Restoring your data using a back-up:**
 1. Close TripScribe.
