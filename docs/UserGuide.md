@@ -702,7 +702,7 @@ This section helps you resolve common issues you might encounter while using Tri
 
 ### Adding Itineraries
 
-**Issue**: "Duplicate contact: ..." error
+**Issue**: "Duplicate itinerary: ..." error
 - Scenario: TripScribe detected a duplicate itinerary (same name).
 - Fix 1: If your intention is to update an existing itinerary, use the [edit command](#editing-contacts-and-itineraries-edit) instead.
 - Fix 2: If your intention is to add a different itinerary, change the name slightly.
