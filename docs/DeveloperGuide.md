@@ -129,7 +129,9 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 <puml src="diagrams/DeleteSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `delete 1` Command" />
 
 <box type="info" seamless>
+
 **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram.
+
 </box>
 
 How the `Logic` component works:
@@ -146,7 +148,7 @@ Here are the other classes in `Logic` (omitted from the class diagram above) tha
 
 How the parsing works:
 * When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
-* All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
+* All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible (e.g, during testing).
 
 ### Model Component
 **API** : [`Model.java`](https://github.com/AY2526S2-CS2103T-F12-1/tp/tree/master/src/main/java/seedu/address/model/Model.java)
@@ -262,8 +264,7 @@ When reading the JSON file to construct the corresponding objects, we have the f
 #### Design considerations
 **Aspect: Managing the association between contacts and itineraries**
 * **Alternative 1 (current choice):** `Itinerary` stores the `Id`s of `Person`s.
-    * Pros: Reading and saving data to JSON file is simple to implement with minimal data duplication.
-    * Pros: Reduces coupling between `Itinerary` and `Person` classes.
+    * Pros: Reading and saving data to JSON file is simple to implement with minimal data duplication. Reduces coupling between `Itinerary` and `Person` classes.
     * Cons: Introduce slight overheads. When retrieving the clients and vendors of an itinerary, we need to resolve the `Id`s back to the `Person` objects.
 * **Alternative 2:** `Itinerary` stores direct references to `Person`s.
     * Pros: The `addi` command would be simpler to implement.
@@ -324,11 +325,11 @@ Editing an itinerary follows the same pattern as editing a person (shown above) 
 #### Design considerations
 
 **Aspect: `EditCommand` class structure**
-* Alternative 1 (Current choice):Abstract `EditCommand` class with `EditPersonCommand` and `EditItineraryCommand` subclasses
+* **Alternative 1 (current choice):** Abstract `EditCommand` class with `EditPersonCommand` and `EditItineraryCommand` subclasses
     * Pros: Better type safety and follows the Open-Closed Principle.
     * Cons: More classes to maintain.
 
-* Alternative 2: Single `EditCommand` class to handle both `Person` and `Itinerary` editing.
+* **Alternative 2:** Single `EditCommand` class to handle both `Person` and `Itinerary` editing.
     * Pros: Fewer classes.
     * Cons: Less type-safety. Long `EditCommand` class.
 
@@ -347,7 +348,9 @@ The sequence diagram below shows the interactions within the logic component.
 <puml src="diagrams/ShowSequenceDiagram-Logic.puml" alt="ShowSequenceDiagram-Logic" />
 
 <box type="info" seamless>
+
 **Note:** The lifeline for `ShowCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+
 </box>
 
 #### Design considerations:
@@ -698,11 +701,11 @@ testers are expected to do more *exploratory* testing.
 
 3. Exiting TripScribe using `exit`
    1. Type `exit` into the command bar of TripScribe <br>
-      Expected: TripScribe application window is closed
+      Expected: TripScribe application window is closed.
 
 4. Exiting TripScribe using the exit button
    1. Click `File` in TripScribe and click the `Exit` button <br>
-      Expected: TripScribe application window is closed
+      Expected: TripScribe application window is closed.
 
 ### Deleting a Person
 
@@ -722,18 +725,18 @@ testers are expected to do more *exploratory* testing.
        Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
 2. Deleting a person associated with an itinerary
-   1. Prerequisites: Ensure a person is associated with an itinerary (e.g. person 1 linked to itinerary 2). Ensure the person is displayed in the person list (e.g. Using the `list /all` command).
-   2. Test case: `delete /contact x` (where x is the person's index in the displayed list)<br>
-      Expected: Contact is deleted.
+    1. Prerequisites: Ensure a person is associated with an itinerary (e.g. person 1 linked to itinerary 2). Ensure the person is displayed in the person list (e.g. Using the `list /all` command).
+    2. Test case: `delete /contact x` (where x is the person's index in the displayed list)<br>
+       Expected: Contact is deleted.
 
    Follow-up:
-   1. Ensure the itinerary is displayed in the itinerary list (e.g. Using the `list /all` command).
-   2. Test case: `show y` (where y is the associated itinerary's index in the displayed list)<br>
-      Expected: Deleted contact no longer appears in the itinerary’s associated contact list.
+    1. Ensure the itinerary is displayed in the itinerary list (e.g. Using the `list /all` command).
+    2. Test case: `show y` (where y is the associated itinerary's index in the displayed list)<br>
+       Expected: Deleted contact no longer appears in the itinerary’s associated contact list.
 
 3. Deleting a person when only some persons are being shown
     1. Prerequisites: Use a filtering command (e.g. `list /vendor`, `list /client`) to display a subset of the full contact list. Ensure there is at least one person in the list.
-     2. Test case: `delete /contact 1`<br>
+    2. Test case: `delete /contact 1`<br>
        Expected: First contact is deleted from the filtered list, not the full list.
 
 4. Deleting a person when no persons are being shown
@@ -752,25 +755,25 @@ These test cases follow the same steps as manual testing for [Deleting a person]
 
 1. Dealing with missing data file
 
-   1. Prerequisites: Data file is not in the `data` folder
-   2. Test case: TripScribe.json is missing from `data` folder on launch. <br>
-   Expected: TripScribe should still launch and function like normal, but with default set of data in view.
+    1. Prerequisites: Data file is not in the `data` folder
+    2. Test case: TripScribe.json is missing from `data` folder on launch. <br>
+       Expected: TripScribe should still launch and function like normal, but with default set of data in view.
 
 2. Dealing with incorrect fields in data file
-   1. Prerequisites: Data file is in data folder
-   2. Test case 1: One field in a `Person` is in the wrong format. <br>
-      Example: `"role" : ""`
-      Expected: The person will not appear in the contacts panel when TripScribe is launched. <br>The data file is updated such that itineraries previously associated with the contact will no longer store the contact's `Id` under its client or vendor lists<br>
-      "Illegal value found in field of a contact entry, skipping." is logged into terminal.
-   3. Test case 2: One field in an `Itinerary` is in the wrong format. <br>
-      Example: `"startDate : "09-12-2026"`
-      Expected: The itinerary  will not appear in the itinerary panel when TripScribe is launched. <br>
-      "Illegal value found in field of an itinerary entry, skipping." is logged into terminal.
-   4. Test case 3: Multiple fields in a `Person` is in the wrong format. <br>
-       Example: `"role" : ""` ,`"phone" : "98765432"`
+    1. Prerequisites: Data file is in data folder
+    2. Test case 1: One field in a `Person` is in the wrong format. <br>
+       Example: `"role" : ""`<br>
+       Expected: The person will not appear in the contacts panel when TripScribe is launched. <br>The data file is updated such that itineraries previously associated with the contact will no longer store the contact's `Id` under its client or vendor lists.<br>
+       "Illegal value found in field of a contact entry, skipping." is logged into terminal.
+    3. Test case 2: One field in an `Itinerary` is in the wrong format. <br>
+       Example: `"startDate : "09-12-2026"`<br>
+       Expected: The itinerary  will not appear in the itinerary panel when TripScribe is launched. <br>
+       "Illegal value found in field of an itinerary entry, skipping." is logged into terminal.
+    4. Test case 3: Multiple fields in a `Person` is in the wrong format. <br>
+       Example: `"role" : ""` ,`"phone" : "98765432"`<br>
        Expected: Similar to test case 1.
-   5. Test case 4: Multiple fields in an `Itinerary` is in the wrong format. <br>
-       Example: `""startDate" : "09-12-2026"` , `"endDate" : "15 December 2026"`
+    5. Test case 4: Multiple fields in an `Itinerary` is in the wrong format. <br>
+       Example: `""startDate" : "09-12-2026"` , `"endDate" : "15 December 2026"`<br>
        Expected: Similar to test case 2.
 
 ## **Appendix: Effort**
