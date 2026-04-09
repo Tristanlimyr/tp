@@ -170,7 +170,7 @@ If you are using a PDF version of this document, be careful when copying and pas
 - Items in square brackets are optional.
     - **Example:** `n/NAME [t/TAG]` can be entered as `n/John Doe t/Bus` or `n/John Doe`.
 - Inputs with `…`​ after them can be used zero or more times.
-    - **Example:**`[t/TAG]…​` can be used as ` ` (i.e. zero times), `t/Bus`, `t/Bus t/Speaks English` etc.
+    - **Example:**`[t/TAG]…​` can be used as ` ` (used zero times), `t/Bus`, `t/Bus t/Speaks English` etc.
 - Information can be supplied in any order.
   - **Example:** If the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 - Additional parameters for commands that do not require them (such as `help`, `exit` and `clear`) will be ignored.
@@ -483,7 +483,7 @@ delete /FLAG INDEX
 **Things to note:**
 * This will delete the contact or itinerary at the specified `INDEX`.
 * `FLAG` specifies the entry type you are deleting. It must be one of: `contact` , `itinerary`.
-* `INDEX` is the index number shown in the displayed person or itinerary list. It **must be a positive, non-zero number** (e.g. 1, 2, 3, …​)
+* `INDEX` is the index number shown in the displayed person or itinerary list. It **must be a positive, non-zero number** (e.g., 1, 2, 3, …​)
 * When deleting a contact, the contact will be also be removed from any itineraries it is part of.
 
 </box>
@@ -542,18 +542,18 @@ You can also exit TripScribe by clicking **`File`**, followed by **`Exit`**, in 
 
 ### Command Summary
 
-| Action                                                | Format                                                                                                                                                               | Example                                                                                                            |
-|-------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
-| [**help**](#viewing-help--help)                       | `help`                                                                                                                                                               | -                                                                                                                  |
-| [**addc**](#adding-a-contact-addc)                    | `addc r/ROLE n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`                                                                                                      | `addc r/client n/James Ho p/(+65) 22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
-| [**addi**](#adding-an-itinerary-addi)                 | `addi n/ITINERARY_NAME dest/DESTINATION from/START_DATE to/END_DATE [c/CLIENT_INDEX]…​ [v/VENDOR_INDEX]…​`                                                           | `addi n/5D4N France Getaway dest/France from/2026-10-12 to/2026-10-17 c/2 v/4`                                     |
-| [**list**](#listing-contacts-and-itineraries-list)    | `list /FLAG`                                                                                                                                                         | `list /contact`                                                                                                    |
-| [**edit**](#editing-contacts-and-itineraries-edit)    | `edit /contact [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​` </br>  `edit /itinerary INDEX [n/NAME] [dest/DESTINATION] [from/START_DATE] [to/END_DATE]` | `edit 2 n/James Lee e/jameslee@example.com`                                                                        |
-| [**show**](#showing-contacts-by-itinerary-show)       | `show INDEX`                                                                                                                                                         | `show 2`                                                                                                           |
-| [**find**](#finding-contacts-by-keywords-find)        | `find KEYWORD [MORE_KEYWORDS]`  </br> `find [PREFIX/KEYWORD]`                                                                                                        | `find James Jake` </br> `find n/Jane a/Apple Street`                                                               |
-| [**delete**](#deleting-a-contact-or-itinerary-delete) | `delete /FLAG INDEX`                                                                                                                                                 | `delete /contact 3`                                                                                                |
-| [**clear**](#clearing-all-entries-clear)              | `clear`                                                                                                                                                              | -                                                                                                                  |
-| [**exit**](#exiting-tripscribe-exit)                  | `exit`                                                                                                                                                               | -                                                                                                                  |
+| Action                                                | Format                                                                                                                                                              | Example                                                                                                       |
+|-------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| [**help**](#viewing-help--help)                       | `help`                                                                                                                                                              | -                                                                                                             |
+| [**addc**](#adding-a-contact-addc)                    | `addc r/ROLE n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`                                                                                                     | `addc r/client n/James Ho p/(+65) 22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/PeanutAllergy` |
+| [**addi**](#adding-an-itinerary-addi)                 | `addi n/ITINERARY_NAME dest/DESTINATION from/START_DATE to/END_DATE [c/CLIENT_INDEX]…​ [v/VENDOR_INDEX]…​`                                                          | `addi n/5D4N France Getaway dest/France from/2026-10-12 to/2026-10-17 c/2 v/4`                                |
+| [**list**](#listing-contacts-and-itineraries-list)    | `list /FLAG`                                                                                                                                                        | `list /contact`                                                                                               |
+| [**edit**](#editing-contacts-and-itineraries-edit)    | `edit /contact [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​` </br> `edit /itinerary INDEX [n/NAME] [dest/DESTINATION] [from/START_DATE] [to/END_DATE]` | `edit /contact 2 n/James Lee e/jameslee@example.com` </br> `edit /itinerary 3 from/2026-10-13 to/2026-10-18`  |
+| [**show**](#showing-contacts-by-itinerary-show)       | `show INDEX`                                                                                                                                                        | `show 2`                                                                                                      |
+| [**find**](#finding-contacts-by-keywords-find)        | `find KEYWORD [MORE_KEYWORDS]` </br> `find [PREFIX/KEYWORD]`                                                                                                        | `find James Jake` </br> `find n/Jane a/Apple Street`                                                          |
+| [**delete**](#deleting-a-contact-or-itinerary-delete) | `delete /FLAG INDEX`                                                                                                                                                | `delete /contact 3`                                                                                           |
+| [**clear**](#clearing-all-entries-clear)              | `clear`                                                                                                                                                             | -                                                                                                             |
+| [**exit**](#exiting-tripscribe-exit)                  | `exit`                                                                                                                                                              | -                                                                                                             |
 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
@@ -695,8 +695,8 @@ This section helps you resolve common issues you might encounter while using Tri
 **Issue**: "Invalid email: ..." error
 - Scenario: TripScribe detected the wrong email format.
 - Fix: Correct the email to use the following format: `LOCAL_PART@DOMAIN`
-  - `LOCAL_PART`: A part of an email consisting of only alphanumeric characters and the following symbols: `+`,`_`, `.`, `-`, It cannot start or end with special characters. (i.e. `alex_yeoh`)
-  - `DOMAIN`: A part of an email consisting of [domain labels](#glossary) separated by dots `.`. Only alphanumeric characters and hyphens are allowed, and it cannot start or end with a hyphen. The final domain label must be at least 2 characters long. (i.e. `example.domain.com`)
+  - `LOCAL_PART`: A part of an email consisting of only alphanumeric characters and the following symbols: `+`,`_`, `.`, `-`, It cannot start or end with special characters. (e.g., `alex_yeoh`)
+  - `DOMAIN`: A part of an email consisting of [domain labels](#glossary) separated by dots `.`. Only alphanumeric characters and hyphens are allowed, and it cannot start or end with a hyphen. The final domain label must be at least 2 characters long. (e.g., `example.domain.com`)
   - Example: `gmail: alexyeo`is invalid, correct it to `alexyeo@gmail.com`.
 
 ### Adding Itineraries
@@ -707,7 +707,7 @@ This section helps you resolve common issues you might encounter while using Tri
 - Fix 2: If your intention is to add a different itinerary, change the name slightly.
 
 **Issue**: "Invalid date range: ..." error
-- Scenario: Start date is **after** end date (i.e. `from/2026-01-05 to/2026-01-01`).
+- Scenario: Start date is **after** end date (e.g., `from/2026-01-05 to/2026-01-01`).
     - Fix: Make sure the start date you enter is before or on the same day as the end date.
 
 **Issue**: "Invalid role: ..." error
@@ -723,8 +723,8 @@ This section helps you resolve common issues you might encounter while using Tri
 
 ### Editing Contacts
 **Issue**: All tags for a contact have disappeared.
-- Scenario: No tags were specified when using `edit` to modify a contact's tags (i.e. `edit /contact 1 t/`).
-    - Fix: Use the `edit` command again and specify the tags, each prefixed with `t/` (i.e. `t/Vegetarian t/ChineseSpeakingOnly`)
+- Scenario: No tags were specified when using `edit` to modify a contact's tags (e.g., `edit /contact 1 t/`).
+    - Fix: Use the `edit` command again and specify the tags, each prefixed with `t/` (e.g., `t/Vegetarian t/ChineseSpeakingOnly`)
 
 ### Editing Itineraries
 **Issue**: "Invalid date range: ..." error
@@ -735,7 +735,7 @@ This section helps you resolve common issues you might encounter while using Tri
 **Issue**: Invalid command format error
 - Scenario 1: No keywords were supplied in the command.
   - Fix: Enter at least one keyword to search for a contact.
-- Scenario 2: Mixing of general search and multi-field search formats (i.e. `find Ryan p/(+65)`)<br>
+- Scenario 2: Mixing of general search and multi-field search formats (e.g., `find Ryan p/(+65)`)<br>
   To resolve this, you should follow one of the following fixes:<br>
   - Fix 1: Use general search format only. `find ryan (+65)`
   - Fix 2: Use multi-field search format only `find n/Ryan p/(+65)`
@@ -753,12 +753,12 @@ This section defines all the specialized terms used in TripScribe to help you un
 * **Flag**: An option used with a command to specify or modify its behavior.
 * **Graphical User Interface (GUI) Application**: An application that users interact with through graphical elements such as buttons, icons, and menus using a mouse or keyboard.
 * **Index**: The position number of an entry as shown in the currently displayed list. For example, the 1st entry shown has index `1`. The index changes depending on the current list view. Indexes start from `1`.
-* **JAR file**: Java Archive file. Refers to the TripScribe application that you run (i.e. `TripScribe.jar`).
-* **JSON file**: JavaScript Object Notation file. A text-based data format used to store TripScribe's data (e.g. `tripscribe.json`).
+* **JAR file**: Java Archive file. Refers to the TripScribe application that you run, `TripScribe.jar`).
+* **JSON file**: JavaScript Object Notation file. A text-based data format used to store TripScribe's data (e.g., `tripscribe.json`).
 * **Local-part**: A part of an email consisting of only alphanumeric characters and the following symbols: `+`,`_`, `.`, `-`, It cannot start or end with special characters.
 * **Mainstream OS**: Operating systems such as Windows, Linux, Unix and macOS.
 * **Parameter**: A piece of information you provide to a command.
-* **Prefix**: A short code that identifies the type of information which follows (e.g. `n/` for name, `p/` for phone, `e/` for email, etc.).
+* **Prefix**: A short code that identifies the type of information which follows (e.g., `n/` for name, `p/` for phone, `e/` for email, etc.).
 * **Tag**: A label used to categorize any number of entries together.
 
 <div style="page-break-after: always;"></div>
