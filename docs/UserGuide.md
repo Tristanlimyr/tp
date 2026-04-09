@@ -195,8 +195,8 @@ addi n/ITINERARY_NAME dest/DESTINATION from/START_DATE to/END_DATE [c/CLIENT_IND
 
 **Things to note:**
 - `ITINERARY_NAME` and `DESTINATION` cannot be blank.
-- TripScribe treats two itineraries as duplicates if they **share the same name** (case-insensitive). Duplicate itineraries cannot be added.
-  - Example: Itineraries with the names `ISLAND TIME: Bali` and `Island Time: Bali` are considered duplicates.
+- TripScribe treats two itineraries as duplicates if they **share the same name** (case-insensitive), **same destination**, and **same date range**. Duplicate itineraries cannot be added.
+  - Example: Itineraries with the names `ISLAND TIME: Bali` and `Island Time: Bali` are considered to have the same name.
 - `START_DATE` and `END_DATE` must be in the format `yyyy-mm-dd`.
   - Example: `20th March 2026` should be written as `2026-03-20`.
 - `END_DATE` must be **equal to or after** `START_DATE`.

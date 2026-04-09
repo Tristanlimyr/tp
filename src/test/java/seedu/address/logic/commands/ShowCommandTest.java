@@ -24,7 +24,7 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.id.Id;
 import seedu.address.model.itinerary.Itinerary;
-import seedu.address.model.itinerary.ItineraryNameMatchesPredicate;
+import seedu.address.model.itinerary.ItineraryMatchesPredicate;
 import seedu.address.model.person.IdMatchesPredicate;
 
 public class ShowCommandTest {
@@ -77,8 +77,8 @@ public class ShowCommandTest {
     }
 
     private void updateModelFilteredList(Model model, Itinerary itinerary) {
-        ItineraryNameMatchesPredicate itineraryNameMatchesPredicate = new ItineraryNameMatchesPredicate(
-                List.of(itinerary.getName()));
+        ItineraryMatchesPredicate itineraryNameMatchesPredicate = new ItineraryMatchesPredicate(
+                List.of(itinerary));
         model.updateFilteredItineraryList(itineraryNameMatchesPredicate);
 
         List<Id> ids = Stream.concat(

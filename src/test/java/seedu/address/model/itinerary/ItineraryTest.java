@@ -61,13 +61,24 @@ public class ItineraryTest {
         // null -> returns false
         assertFalse(FRANCE_TRIP.isSameItinerary(null));
 
-        // same name, all other attributes different -> returns true
-        Itinerary editedItinerary = new ItineraryBuilder(FRANCE_TRIP).withDestination(VALID_ITINERARY_DEST_BALI)
-                .withDateRange(VALID_ITINERARY_START_DATE_BALI, VALID_ITINERARY_END_DATE_BALI).build();
+        // same name, same destination, same date range, all other attributes different -> returns true
+        Itinerary editedItinerary = new ItineraryBuilder(FRANCE_TRIP)
+                .withClientIds(Set.of(new Id()))
+                .withVendorIds(Set.of(new Id()))
+                .build();
         assertTrue(FRANCE_TRIP.isSameItinerary(editedItinerary));
 
         // different name, all other attributes same -> returns false
         editedItinerary = new ItineraryBuilder().withName(VALID_ITINERARY_NAME_BALI).build();
+        assertFalse(FRANCE_TRIP.isSameItinerary(editedItinerary));
+
+        // different destination, all other attributes same -> returns false
+        editedItinerary = new ItineraryBuilder().withDestination(VALID_ITINERARY_DEST_BALI).build();
+        assertFalse(FRANCE_TRIP.isSameItinerary(editedItinerary));
+
+        // different date range, all other attributes same -> returns false
+        editedItinerary = new ItineraryBuilder()
+                .withDateRange(VALID_ITINERARY_START_DATE_BALI, VALID_ITINERARY_END_DATE_BALI).build();
         assertFalse(FRANCE_TRIP.isSameItinerary(editedItinerary));
 
         // name differs in case, all other attributes same -> returns true
@@ -75,7 +86,7 @@ public class ItineraryTest {
                 .withName(VALID_ITINERARY_NAME_FRANCE.toLowerCase()).build();
         assertTrue(FRANCE_TRIP.isSameItinerary(editedtripToFrance));
 
-        // name has trailing spaces, all other attributes same -> returns true
+        // name has trailing spaces, all other attributes same -> returns false
         String nameWithTrailingSpaces = VALID_ITINERARY_NAME_FRANCE + " ";
         editedtripToFrance = new ItineraryBuilder(FRANCE_TRIP).withName(nameWithTrailingSpaces).build();
         assertFalse(FRANCE_TRIP.isSameItinerary(editedtripToFrance));
