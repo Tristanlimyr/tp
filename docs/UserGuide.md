@@ -583,7 +583,7 @@ It is recommended that you back up your data regularly, especially if you plan t
 
 ### Editing Your Data File
 
-TripScribe stores your data automatically as a JSON file found in `[JAR file location]/data/tripscribe.json`.<br>
+TripScribe stores your data as a JSON file found in `[JAR file location]/data/tripscribe.json`.<br>
 Note that the first time you run TripScribe, the data file is not created immediately. It is created only when the sample data is first updated or edited.   
 * Example: If your JAR file is at `C:\Users\YourName\TripScribe\tripscribe.jar`, your data file is at `C:\Users\YourName\TripScribe\data\tripscribe.json`
 
