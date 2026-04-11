@@ -743,7 +743,7 @@ This section helps you resolve common issues you might encounter while using Tri
     - Fix: Make sure the start date you enter is before or on the same day as the end date.
 
 ### Finding Contacts
-**Issue**: Invalid command format error
+**Issue**: "Invalid command format!  ..." error
 - Scenario 1: No keywords were supplied in the command.
   - Fix: Enter at least one keyword to search for a contact.
 - Scenario 2: Mixing of general search and multi-field search formats (e.g., `find Ryan p/(+65)`)<br>
