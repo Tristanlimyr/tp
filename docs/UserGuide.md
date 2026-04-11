@@ -758,6 +758,7 @@ This section defines all the specialized terms used in TripScribe to help you un
 * **Flag**: An option used with a command to specify or modify its behavior.
 * **Graphical User Interface (GUI) Application**: An application that users interact with through graphical elements such as buttons, icons, and menus using a mouse or keyboard.
 * **Index**: The position number of an entry as shown in the currently displayed list. For example, the 1st entry shown has index `1`. The index changes depending on the current list view. Indexes start from `1`.
+* * **Itinerary**: A plan for a tour that includes the tour name, start and end dates, the clients participating in the tour, and the vendors involved.
 * **JAR file**: Java Archive file. Refers to the TripScribe application that you run, `TripScribe.jar`).
 * **JSON file**: JavaScript Object Notation file. A text-based data format used to store TripScribe's data (e.g., `tripscribe.json`).
 * **Local-part**: A part of an email consisting of only alphanumeric characters and the following symbols: `+`,`_`, `.`, `-`, It cannot start or end with special characters.
