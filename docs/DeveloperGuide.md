@@ -678,7 +678,7 @@ Use case ends.
 
 ---
 
-**UC05: Multi-field Find**
+**UC06: Multi-field Find**
 
 **MSS**
 1. User requests to find contacts based on specific fields and enters keywords with prefixes.
@@ -713,7 +713,7 @@ Use case ends.
 
 ---
 
-**UC06: Edit**
+**UC07: Edit**
 
 **MSS**
 1. User requests to edit a contact or itinerary by specifying the entry type and index
@@ -750,12 +750,12 @@ Use case ends.
 
       Use case ends.
 ---
-**UC07: Show**
+**UC08: Show**
 
 **MSS**
 1. User requests to show an itinerary and its associated contacts by specifying the itinerary index.
 2. TripScribe retrieves the itinerary, and retrieves contacts associated with it.
-4. TripScribe displays a success message and the view is updated to show the specified itinerary and its associated contacts.
+3. TripScribe displays a success message and the view is updated to show the specified itinerary and its associated contacts.
 
 Use case ends.
 
