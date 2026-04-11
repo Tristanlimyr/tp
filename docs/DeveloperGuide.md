@@ -650,13 +650,12 @@ Use case ends.
 
       Use case ends.
 ---
-**UC05: Find**
+**UC05: General Find**
 
 **MSS**
-1. User requests to delete a contact or itinerary by specifying the entry type and index.
-2. TripScribe deletes the specified contact or itinerary.
-3. If the deleted entry is a contact, TripScribe removes that contact from any associated itineraries.
-4. TripScribe displays a success message and the updated list.
+1. User requests to find contacts and enters keywords.
+2. TripScribe retrieves contacts that match any keyword in any searchable field.
+3. TripScribe displays a success message and the filtered list of contacts that match the keywords.
 
 Use case ends.
 
@@ -667,7 +666,53 @@ Use case ends.
 
       Use case ends.
 
+* 1b. TripScribe detects no keywords in the entered command format.
+    * 1b1. TripScribe displays a format error message indicating that at least 1 keyword must be given for search.
+
+      Use case ends.
+
+* 2a. TripScribe finds zero entries matching.
+    * 2a1. TripScribe displays an empty result message.
+
+      Use case ends.
+
 ---
+---
+**UC05: Multi-field Find**
+
+**MSS**
+1. User requests to find contacts based on specific fields and enters keywords with prefixes.
+2. TripScribe retrieves contacts that match based on the following criteria: <br>
+   - within the same field, keywords are matched using OR
+   - across different fields, fields are matched using AND
+3. TripScribe displays a success message and the filtered list of contacts that match the keywords.
+
+Use case ends.
+
+**Extensions**
+
+* 1a. TripScribe detects an error in the entered command format.
+    * 1a1. TripScribe displays a format error message with the correct command usage.
+
+      Use case ends.
+
+* 1b. TripScribe detects no keywords in the entered command format.
+    * 1b1. TripScribe displays a format error message indicating that at least 1 keyword must be given for search.
+
+      Use case ends.
+
+* 1c. TripScribe detects a non-prefixed keyword before the first prefixed keyword.
+    * 1c1. TripScribe displays a format error message with the correct command usage.
+
+      Use case ends.
+
+* 2a. TripScribe finds zero entries matching.
+    * 2a1. TripScribe displays an empty result message.
+
+      Use case ends.
+
+---
+
 **UC06: Edit**
 
 **MSS**
