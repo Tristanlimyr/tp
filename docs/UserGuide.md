@@ -725,7 +725,7 @@ This section helps you resolve common issues you might encounter while using Tri
 - Scenario: TripScribe detected a mismatch between the prefix given, and the contact's role format. (e.g., 3rd contact was added as a client `c/3`, but the 3rd contact in the list is a `vendor`).
       - Fix: Make sure you put the correct role prefix (either `c/` or `v/`) for each contact by referring to the currently displayed list.
 
-**Issue**: Invalid command format error when adding multiple contacts
+**Issue**: "Invalid command format!  ..." error when adding multiple contacts
 - Scenario: TripScribe detected the wrong prefix format.
 - Fix: Ensure every contact index has the correct prefix.
     - Example: `c/1 2 3 v/4 5`is invalid, correct it to `c/1 c/2 c/3 v/4 v/5`.
