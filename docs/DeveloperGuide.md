@@ -793,3 +793,6 @@ These test cases follow the same steps as manual testing for [Deleting a person]
 Team size: 4
 
 1. Adding contacts to existing itineraries using the `edit` command.
+2. Extending `find` command to work for itineraries.
+3. Limiting number of tags to prevent UX issues.
+4. Show error message on startup in result display to user when data file has invalid data.
