@@ -795,4 +795,8 @@ Team size: 4
 1. Adding contacts to existing itineraries using the `edit` command.
 2. Extending `find` command to work for itineraries.
 3. Limiting number of tags to prevent UX issues.
-4. Show error message on startup in result display to user when data file has invalid data.
+4. Show error message on startup in `ResultDisplay` to user when data file has invalid data.
+5. Fix data file creation to be in same folder as `.jar` file even when run from a different working directory
+6. Fix prefixes being incorrectly accepted in certain fields (i.e `Name`)
+7. Improved parsing for `Name`, `ItineraryName`, and `Destination`
+8. Message to alert user that values edited in `Person` and `Itinerary` to same value 
