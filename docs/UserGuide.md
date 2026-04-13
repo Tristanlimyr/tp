@@ -582,7 +582,7 @@ It is recommended that you back up your data regularly, especially if you plan t
 2. Copy the entire `data` folder to a safe location (e.g., an external drive, cloud storage, etc.). 
 
 **Restoring your data using a back-up:**
-1.  Navigate to the folder containing `TripScribe.jar`.
+1. Navigate to the folder containing `TripScribe.jar`.
 2. Delete the current `data` folder.
 3. Copy the entire backup folder into the folder.
 4. Rename the backup folder to `data`.
