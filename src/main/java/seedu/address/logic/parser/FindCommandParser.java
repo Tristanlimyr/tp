@@ -61,6 +61,9 @@ public class FindCommandParser implements Parser<FindCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_ROLE, PREFIX_NAME, PREFIX_PHONE,
+                PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
+
         List<String> nameKeywords = argMultimap.getAllValues(PREFIX_NAME);
         List<String> phoneKeywords = argMultimap.getAllValues(PREFIX_PHONE);
         List<String> emailKeywords = argMultimap.getAllValues(PREFIX_EMAIL);
