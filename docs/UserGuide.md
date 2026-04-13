@@ -109,6 +109,15 @@ A pop-up window similar to the below should appear in a few seconds. <br>
 | <img src="images/Ui.png" alt="TripScribe Window" width="500"/><br>TripScribe Window |
 |:-----------------------------------------------------------------------------------:|
 
+<box type="warning" seamless>
+
+**Warning:**
+If you run TripScribe from a different folder from the one the `TripScribe.jar` file is in, the data file will not be created in the same folder as `TripScribe.jar` program file.
+Therefore, ensure you run TripScribe in the same folder as the `TripScribe.jar` program file. <br>
+
+</box>
+
+
 <div style="page-break-after: always;"></div>
 
 #### Understanding TripScribe's Interface
