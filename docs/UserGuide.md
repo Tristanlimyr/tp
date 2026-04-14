@@ -197,7 +197,7 @@ See an unfamiliar term? Jump to our [Glossary](#glossary) for its definition.
 
 You can open a help window that summarizes all commands, their formats and helpful examples using this command. For more detailed instructions, you can copy the User Guide URL from the help window, and paste it into your browser to access this guide.
 
-Use this when you need a quick reference of command formats, or want to access the full this guide.
+Use this when you need a quick reference of command formats, or want to access this full guide.
 
 **Format:**
 ```
