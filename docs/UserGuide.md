@@ -40,7 +40,7 @@ Jump to our [FAQ](#faq) and [Troubleshooting](#troubleshooting) sections.
     - [Listing Contacts and Itineraries : `list`](#listing-contacts-and-itineraries-list)
     - [Editing Contacts and Itineraries : `edit`](#editing-contacts-and-itineraries-edit)
     - [Showing Itinerary Details: `show`](#showing-itinerary-details-show)
-    - [Finding Contacts by Name : `find`](#finding-contacts-by-keywords-find)
+    - [Finding Contacts by Keywords : `find`](#finding-contacts-by-keywords-find)
     - [Deleting a Contact or Itinerary : `delete`](#deleting-a-contact-or-itinerary-delete)
     - [Clearing All Entries : `clear`](#clearing-all-entries-clear)
     - [Exiting TripScribe : `exit`](#exiting-tripscribe-exit)
