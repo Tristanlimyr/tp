@@ -708,7 +708,7 @@ This section helps you resolve common issues you might encounter while using Tri
 - Fix 2: If your intention is to add a different contact, change the name slightly or use a different phone number.
 
 **Issue**: "Invalid role: ..." error
-- Scenario**: TripScribe detected in invalid role (role can only be 'client' or 'vendor').
+- Scenario: TripScribe detected in invalid role (role can only be 'client' or 'vendor').
 - Fix 1: If your intention is to label the contact with something more specific, add that as a tag instead.
   - Example: `r/BusDriver` is invalid, correct it to `r/vendor t/BusDriver`
 - Fix 2: If you mistyped, correct the role to either 'client' or 'vendor' exactly.
