@@ -824,7 +824,7 @@ testers are expected to do more *exploratory* testing.
 1. Deleting a person while all persons are being shown
    1. Prerequisites: List all persons using the `list /all` command. Ensure there are multiple persons in the list.
    2. Test case: `delete /contact 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message.
 
    Other incorrect delete commands to try:
     1. Test case: `delete` (missing flag and index)<br>
