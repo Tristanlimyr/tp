@@ -3,6 +3,7 @@ package seedu.address.model.itinerary;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.Locale;
 /**
  * Represents an Itinerary's destination in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidDestination(String)}
@@ -51,7 +52,7 @@ public class Destination {
 
     @Override
     public int hashCode() {
-        return destination.hashCode();
+        return destination.toLowerCase(Locale.ROOT).hashCode();
     }
 
     @Override
